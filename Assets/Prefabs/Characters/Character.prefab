@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1589767480572072437}
   - component: {fileID: 4457742657596335119}
-  - component: {fileID: 7230378031588479265}
   - component: {fileID: 795766563738966489}
   - component: {fileID: 6579959866172428271}
   m_Layer: 0
@@ -94,21 +93,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &7230378031588479265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017313744824390306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc3e2b8f891c920498739108068b8743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovementSystem
-  _moveSpeed: 20
-  _maxVelocity: 7
-  _linearDamping: 4
 --- !u!50 &795766563738966489
 Rigidbody2D:
   serializedVersion: 5
@@ -180,5 +164,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
