@@ -281,6 +281,7 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: 5e15594e4cab8284eaf37aaa70a61339, type: 2}
   _currentState: {fileID: 0}
   _agent: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!95 &5188136792311771159
 Animator:
   serializedVersion: 7
@@ -291,7 +292,7 @@ Animator:
   m_GameObject: {fileID: 8551794574967235073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2906c1d9bd5e8f4cb653121690cedc9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

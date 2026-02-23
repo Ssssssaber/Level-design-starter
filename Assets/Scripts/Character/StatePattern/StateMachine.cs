@@ -14,11 +14,10 @@ public class StateMachine : MonoBehaviour
     public StateID InitStateID;
     public List<StateMapping> availableStates;
 
-
     private Dictionary<StateID, State> _stateCache = new Dictionary<StateID, State>(); 
     public State _currentState;
     public NavMeshAgent _agent;
-    private Animator _animator;
+    public Animator _animator;
 
     private void Awake()
     {

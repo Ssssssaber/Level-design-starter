@@ -6,6 +6,7 @@ public class ChaseState : State {
     {
         //Anim.SetBool("isMoving", true);
         Debug.Log("enter chase");
+        _machine._animator.Play("Walk");
     }
 
     public override void UpdateState() {
