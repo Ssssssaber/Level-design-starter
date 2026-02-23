@@ -1,7 +1,4 @@
-namespace Player
+public interface IAnimationEventHandler
 {
-    public interface IAnimationEventHandler
-    {
-        void OnAnimationFinished(string animName);
-    }
+    void OnAnimationFinished(string animName);
 }

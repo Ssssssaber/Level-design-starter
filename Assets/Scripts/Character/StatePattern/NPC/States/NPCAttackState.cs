@@ -1,32 +1,57 @@
 using System;
 using UnityEngine;
 
-namespace NPC {
-[CreateAssetMenu(menuName = "NPC/States/Trigger/Attack")]
-public class AttackState : NPCState {
-    public override void Enter()
+namespace NPC
+{
+    [CreateAssetMenu(menuName = "NPC/States/Trigger/Attack")]
+    public class AttackState : NPCState
     {
-        _machine._agent.isStopped = true;
-        //Anim.SetTrigger("attack");
-        _machine._animator.Play("Attack");
-    }
+        bool _targetInRange = false;
+        public override void Enter()
+        {
+            _targetInRange = true;
+            _machine._agent.isStopped = true;
+            //Anim.SetTrigger("attack");
+            _machine._animator.Play("Attack");
+        }
 
-    public override void UpdateState()
-    {
-    }
+        public override void UpdateState()
+        {
+        }
 
-    public override void OnZoneExit(NPCTriggerZoneType zone, Collider2D other)
-    {
-        if (zone == NPCTriggerZoneType.Attack)
+        public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
+        {
+            if (zone == NPCTriggerZoneType.Attack)
+            {
+                _targetInRange = true;
+            }
+        }
+
+        public override void OnZoneExit(NPCTriggerZoneType zone, Collider2D other)
+        {
+            if (zone == NPCTriggerZoneType.Attack)
+            {
+                _targetInRange = false;
+            }
+        }
+
+        public override void OnAnimationFinished(string animName)
+        {
+            if (animName == "Attack" && !_targetInRange)
+            {
+                ExitAttackState();
+            }
+        }
+
+        private void ExitAttackState()
         {
             _machine._agent.isStopped = false;
             _machine.SwitchState(NPCStateID.Chase);
         }
-    }
 
-    public override void Exit()
-    {
-        _machine._agent.isStopped = false;
+        public override void Exit()
+        {
+            _machine._agent.isStopped = false;
+        }
     }
-}    
 }

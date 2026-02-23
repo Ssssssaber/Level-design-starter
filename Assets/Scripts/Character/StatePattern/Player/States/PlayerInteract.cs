@@ -1,28 +1,29 @@
 using UnityEngine;
 
-namespace Player {
-[CreateAssetMenu(menuName = "Player/States/Interact")]
-public class InteractState : PlayerState
+namespace Player
 {
-    public override void Enter()
+    [CreateAssetMenu(menuName = "Player/States/Interact")]
+    public class InteractState : PlayerState
     {
-        Debug.Log("Enter IdleState");
-        _machine._animator.Play("Interact");
-        _machine._movementSystem.CanMove = false; // Disable movement
-    }
-
-    public override void UpdateState()
-    {
-        // Check if the player starts moving
-        if (_machine._movementSystem.CurrentDirection.magnitude > 0.1f)
+        public override void Enter()
         {
-            _machine.SwitchState(PlayerStateID.Move);
+            Debug.Log("Enter IdleState");
+            _machine._animator.Play("Interact");
+            _machine._movementSystem.CanMove = false; // Disable movement
+        }
+
+        public override void UpdateState()
+        {
+            // Check if the player starts moving
+            if (_machine._movementSystem.CurrentDirection.magnitude > 0.1f)
+            {
+                _machine.SwitchState(PlayerStateID.Move);
+            }
+        }
+
+        public override void Exit()
+        {
+            Debug.Log("Exit IdleState");
         }
     }
-
-    public override void Exit()
-    {
-        Debug.Log("Exit IdleState");
-    }
-}
 }

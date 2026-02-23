@@ -1,20 +1,21 @@
 using UnityEngine;
 
-namespace Player {
-public enum PlayerStateID { Idle, Move, Attack, Interact, TakeDamage, Dying }
-
-public abstract class PlayerState : ScriptableObject, IAnimationEventHandler
+namespace Player
 {
-    [HideInInspector] protected PlayerStateMachine _machine;
-    public virtual void Init(PlayerStateMachine machine)
+    public enum PlayerStateID { Idle, Move, Attack, Interact, TakeDamage, Dying }
+
+    public abstract class PlayerState : ScriptableObject, IAnimationEventHandler
     {
-        _machine = machine;
+        [HideInInspector] protected PlayerStateMachine _machine;
+        public virtual void Init(PlayerStateMachine machine)
+        {
+            _machine = machine;
+        }
+
+        public abstract void Enter();
+        public abstract void UpdateState();
+        public abstract void Exit();
+
+        public virtual void OnAnimationFinished(string animName) { }
     }
-
-    public abstract void Enter();
-    public abstract void UpdateState();
-    public abstract void Exit();
-
-    public virtual void OnAnimationFinished(string animName) { }
-}
 }
