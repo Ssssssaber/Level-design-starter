@@ -1,7 +1,9 @@
 using UnityEngine;
 
+
+namespace NPC {
 [CreateAssetMenu(menuName = "AI/States/Trigger/Chase")]
-public class ChaseState : State {
+public class ChaseState : NPCState {
     public override void Enter()
     {
         //Anim.SetBool("isMoving", true);
@@ -13,20 +15,21 @@ public class ChaseState : State {
         _machine._agent.SetDestination(_machine.Player.position);
     }
 
-    public override void OnZoneEnter(TriggerZoneType zone, Collider2D other)
+    public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
     {
-        if (zone == TriggerZoneType.Attack) _machine.SwitchState(StateID.Attack);
+        if (zone == NPCTriggerZoneType.Attack) _machine.SwitchState(NPCStateID.Attack);
     }
 
-    public override void OnZoneExit(TriggerZoneType zone, Collider2D other)
+    public override void OnZoneExit(NPCTriggerZoneType zone, Collider2D other)
     {
-        if (zone != TriggerZoneType.Vision) return;
+        if (zone != NPCTriggerZoneType.Vision) return;
 
         _machine._agent.SetDestination(_machine._initialPosiiton);
-        _machine.SwitchState(StateID.Move);
+        _machine.SwitchState(NPCStateID.Move);
     }
 
     public override void Exit()
     {
     }
+}
 }

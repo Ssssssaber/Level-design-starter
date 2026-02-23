@@ -2,20 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StateMachine : MonoBehaviour
+namespace NPC {
+public class NPCStateMachine : MonoBehaviour
 {
     [System.Serializable]
     public class StateMapping {
-        public StateID id;
-        public State stateAsset;
+        public NPCStateID id;
+        public NPCState stateAsset;
     }
 
     public Transform Player;
-    public StateID InitStateID;
+    public NPCStateID InitStateID;
     public List<StateMapping> availableStates;
 
-    private Dictionary<StateID, State> _stateCache = new Dictionary<StateID, State>(); 
-    public State _currentState;
+    private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>(); 
+    public NPCState _currentState;
     public NavMeshAgent _agent;
     public Animator _animator;
     private SpriteRenderer _sprite;
@@ -50,7 +51,7 @@ public class StateMachine : MonoBehaviour
         _currentState?.UpdateState();
     }
 
-    public void SwitchState(StateID newID)
+    public void SwitchState(NPCStateID newID)
     {
         Debug.LogWarning($"Switch state: {newID} from {_currentState}");
         _currentState?.Exit();
@@ -58,15 +59,16 @@ public class StateMachine : MonoBehaviour
         _currentState.Enter();
     }
 
-    public void NotifyZoneEnter(TriggerZoneType zone, Collider2D other)
+    public void NotifyZoneEnter(NPCTriggerZoneType zone, Collider2D other)
     {
         Debug.LogWarning($"Zone {zone} ENTERED by {other.gameObject.name}");
         _currentState?.OnZoneEnter(zone, other);
     }
 
-    public void NotifyZoneExit(TriggerZoneType zone, Collider2D other)
+    public void NotifyZoneExit(NPCTriggerZoneType zone, Collider2D other)
     {
         Debug.LogWarning($"Zone {zone} EXITED by {other.gameObject.name}");
         _currentState?.OnZoneExit(zone, other);
     }
+}
 }

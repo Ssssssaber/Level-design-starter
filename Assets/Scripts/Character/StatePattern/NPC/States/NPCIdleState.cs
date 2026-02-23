@@ -1,7 +1,9 @@
 using UnityEngine;
 
+
+namespace NPC {
 [CreateAssetMenu(menuName = "AI/States/Idle")]
-public class IdleState : State {
+public class IdleState : NPCState {
     public override void Enter()
     {
         Debug.Log("enter idle");
@@ -10,9 +12,9 @@ public class IdleState : State {
 
     public override void UpdateState() { }
 
-    public override void OnZoneEnter(TriggerZoneType zone, Collider2D other)
+    public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
     {
-        if (zone == TriggerZoneType.Vision) { _machine.SwitchState(StateID.Chase); }
+        if (zone == NPCTriggerZoneType.Vision) { _machine.SwitchState(NPCStateID.Chase); }
         //else if (zone == TriggerZoneType.Attack) { _machine.SwitchState(StateID.Attack); }
     }
 
@@ -20,4 +22,5 @@ public class IdleState : State {
     {
         Debug.Log("exit idle");
     }
+}
 }

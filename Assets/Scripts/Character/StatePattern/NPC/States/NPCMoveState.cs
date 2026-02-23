@@ -1,7 +1,9 @@
 using UnityEngine;
 
+
+namespace NPC {
 [CreateAssetMenu(menuName = "AI/States/Move")]
-public class MoveState : State {
+public class MoveState : NPCState {
     public override void Enter()
     {
         //Anim.SetBool("isMoving", true);
@@ -11,13 +13,13 @@ public class MoveState : State {
     public override void UpdateState() {
         if (!_machine._agent.pathPending && _machine._agent.remainingDistance <= _machine._agent.stoppingDistance)
         {
-            _machine.SwitchState(StateID.Idle);
+            _machine.SwitchState(NPCStateID.Idle);
         }
     }
 
-    public override void OnZoneEnter(TriggerZoneType zone, Collider2D other)
+    public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
     {
-        if (zone == TriggerZoneType.Vision) { _machine.SwitchState(StateID.Chase); }
+        if (zone == NPCTriggerZoneType.Vision) { _machine.SwitchState(NPCStateID.Chase); }
         //else if (zone == TriggerZoneType.Attack) { _machine.SwitchState(StateID.Attack); }
     }
 
@@ -25,4 +27,5 @@ public class MoveState : State {
     {
         _machine._agent.ResetPath();
     }
+}
 }

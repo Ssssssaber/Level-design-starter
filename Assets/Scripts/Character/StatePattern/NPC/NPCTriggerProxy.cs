@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class TriggerProxy : MonoBehaviour {
-    public TriggerZoneType zoneType;
-    private StateMachine _parentAI;
+namespace NPC {
+public class NPCTriggerProxy : MonoBehaviour {
+    public NPCTriggerZoneType zoneType;
+    private NPCStateMachine _parentAI;
 
     void Awake()
     {
-        _parentAI = GetComponentInParent<StateMachine>();
+        _parentAI = GetComponentInParent<NPCStateMachine>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -18,4 +19,5 @@ public class TriggerProxy : MonoBehaviour {
     {
         _parentAI.NotifyZoneExit(zoneType, other);
     }
+}
 }

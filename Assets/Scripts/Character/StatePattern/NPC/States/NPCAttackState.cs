@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 
+namespace NPC {
 [CreateAssetMenu(menuName = "AI/States/Trigger/Attack")]
-public class AttackState : State {
+public class AttackState : NPCState {
     public override void Enter()
     {
         _machine._agent.isStopped = true;
@@ -14,12 +15,12 @@ public class AttackState : State {
     {
     }
 
-    public override void OnZoneExit(TriggerZoneType zone, Collider2D other)
+    public override void OnZoneExit(NPCTriggerZoneType zone, Collider2D other)
     {
-        if (zone == TriggerZoneType.Attack)
+        if (zone == NPCTriggerZoneType.Attack)
         {
             _machine._agent.isStopped = false;
-            _machine.SwitchState(StateID.Chase);
+            _machine.SwitchState(NPCStateID.Chase);
         }
     }
 
@@ -27,4 +28,5 @@ public class AttackState : State {
     {
         _machine._agent.isStopped = false;
     }
+}    
 }

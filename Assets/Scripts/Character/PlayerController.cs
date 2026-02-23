@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,11 +7,13 @@ public class PlayerController : MonoBehaviour
     private MovementSystem _movementSystem;
     private PlayerInput _playerInput;
     private InputSystem_Actions _actions;
+    private SpriteRenderer _sprite;
 
     void Awake()
     {
         _movementSystem = GetComponent<MovementSystem>();
         _playerInput = GetComponent<PlayerInput>();
+        _sprite = GetComponent<SpriteRenderer>();
 
         _actions = new InputSystem_Actions();
 
@@ -22,8 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        _movementSystem.SetDirection(
-            context.ReadValue<Vector2>().normalized
-        );
+        var direction = context.ReadValue<Vector2>().normalized;
+
+        _sprite.flipX = direction.x < 0; 
+        _movementSystem.SetDirection(direction);
     }
 }
