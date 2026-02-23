@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace NPC {
-public enum NPCStateID { Idle, Move, Chase, Attack }
+public enum NPCStateID { Idle, Move, Chase, Attack, TakeDamage, Dying }
 public enum NPCTriggerZoneType { Vision, Attack }
 
 public abstract class NPCState : ScriptableObject

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 namespace NPC {
-[CreateAssetMenu(menuName = "AI/States/Trigger/Attack")]
+[CreateAssetMenu(menuName = "NPC/States/Trigger/Attack")]
 public class AttackState : NPCState {
     public override void Enter()
     {

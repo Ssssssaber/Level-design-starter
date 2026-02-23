@@ -1,41 +1,36 @@
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class MovementSystem : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    [SerializeField] private float _moveSpeed = 20f;
-    [SerializeField] private float _maxVelocity = 7f;
-    [SerializeField] private float _linearDamping = 4f;
+    [SerializeField] private float _moveSpeed = 5f;
+    private Vector2 _currentDirection;
+    private Rigidbody2D _rigidbody;
+    private bool _canMove = true; // Flag to enable/disable movement
 
-    private Vector2 _direction;
-    private Rigidbody2D _body;
-
-    void Awake()
+    public Vector2 CurrentDirection => _currentDirection;
+    public bool CanMove
     {
-        _body = GetComponent<Rigidbody2D>();
-        _body.linearDamping = _linearDamping;
+        get => _canMove;
+        set => _canMove = value;
     }
 
-    void FixedUpdate()
+    private void Awake()
     {
-        ApplyMovement();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void SetDirection(Vector3 direction)
+    private void FixedUpdate()
     {
-        _direction = direction;
-    } 
-
-    private void ApplyMovement()
-    {
-        if (_direction == Vector2.zero) return;
-
-        _body.AddForce(_direction * _moveSpeed);
-
-        if (_body.linearVelocity.magnitude > _maxVelocity)
+        if (_canMove)
         {
-            _body.linearVelocity = _body.linearVelocity.normalized * _maxVelocity;
+            _rigidbody.linearVelocity = _currentDirection * _moveSpeed;
+            return;
         }
+        _rigidbody.linearVelocity = Vector2.zero;
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        _currentDirection = direction;
     }
 }

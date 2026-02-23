@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 namespace NPC {
-[CreateAssetMenu(menuName = "AI/States/Trigger/Chase")]
+[CreateAssetMenu(menuName = "NPC/States/Trigger/Chase")]
 public class ChaseState : NPCState {
     public override void Enter()
     {

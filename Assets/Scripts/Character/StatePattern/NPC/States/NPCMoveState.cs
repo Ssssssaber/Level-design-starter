@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 namespace NPC {
-[CreateAssetMenu(menuName = "AI/States/Move")]
+[CreateAssetMenu(menuName = "NPC/States/Move")]
 public class MoveState : NPCState {
     public override void Enter()
     {
