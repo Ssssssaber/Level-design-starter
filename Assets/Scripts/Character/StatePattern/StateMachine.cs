@@ -18,11 +18,15 @@ public class StateMachine : MonoBehaviour
     public State _currentState;
     public NavMeshAgent _agent;
     public Animator _animator;
+    private SpriteRenderer _sprite;
+    public Vector2 _initialPosiiton;
 
     private void Awake()
     {
-        _agent = GetComponent<NavMeshAgent>();
+        _initialPosiiton = transform.position;
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        _agent = GetComponent<NavMeshAgent>();
 
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
@@ -41,11 +45,14 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
+        _sprite.flipX = _agent.velocity.x < 0;
+
         _currentState?.UpdateState();
     }
 
     public void SwitchState(StateID newID)
     {
+        Debug.LogWarning($"Switch state: {newID} from {_currentState}");
         _currentState?.Exit();
         _currentState = _stateCache[newID];
         _currentState.Enter();
@@ -53,11 +60,13 @@ public class StateMachine : MonoBehaviour
 
     public void NotifyZoneEnter(TriggerZoneType zone, Collider2D other)
     {
+        Debug.LogWarning($"Zone {zone} ENTERED by {other.gameObject.name}");
         _currentState?.OnZoneEnter(zone, other);
     }
 
     public void NotifyZoneExit(TriggerZoneType zone, Collider2D other)
     {
+        Debug.LogWarning($"Zone {zone} EXITED by {other.gameObject.name}");
         _currentState?.OnZoneExit(zone, other);
     }
 }

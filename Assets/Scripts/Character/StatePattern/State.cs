@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum StateID { Idle, Chase, Attack }
+public enum StateID { Idle, Move, Chase, Attack }
 public enum TriggerZoneType { Vision, Attack }
 
 public abstract class State : ScriptableObject

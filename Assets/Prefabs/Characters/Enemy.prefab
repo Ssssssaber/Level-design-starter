@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 9180484118036996305}
   - component: {fileID: 4951039185679513970}
   - component: {fileID: 9217090549569706394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,6 +172,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795766563738966489, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -276,12 +280,15 @@ MonoBehaviour:
   - id: 0
     stateAsset: {fileID: 11400000, guid: bfa353fec327aee4f8041ec86cc8242f, type: 2}
   - id: 1
-    stateAsset: {fileID: 11400000, guid: 878045d36ac398f4794b70b88bf9b210, type: 2}
+    stateAsset: {fileID: 11400000, guid: ff43d59c250c8144d925920f8a3f3981, type: 2}
   - id: 2
+    stateAsset: {fileID: 11400000, guid: 878045d36ac398f4794b70b88bf9b210, type: 2}
+  - id: 3
     stateAsset: {fileID: 11400000, guid: 5e15594e4cab8284eaf37aaa70a61339, type: 2}
   _currentState: {fileID: 0}
   _agent: {fileID: 0}
   _animator: {fileID: 0}
+  _initialPosiiton: {x: 0, y: 0}
 --- !u!95 &5188136792311771159
 Animator:
   serializedVersion: 7

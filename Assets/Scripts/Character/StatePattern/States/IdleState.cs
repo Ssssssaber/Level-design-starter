@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/States/Trigger/Idle")]
+[CreateAssetMenu(menuName = "AI/States/Idle")]
 public class IdleState : State {
     public override void Enter()
     {
@@ -10,8 +10,10 @@ public class IdleState : State {
 
     public override void UpdateState() { }
 
-    public override void OnZoneEnter(TriggerZoneType zone, Collider2D other) {
-        if (zone == TriggerZoneType.Vision) _machine.SwitchState(StateID.Chase);
+    public override void OnZoneEnter(TriggerZoneType zone, Collider2D other)
+    {
+        if (zone == TriggerZoneType.Vision) { _machine.SwitchState(StateID.Chase); }
+        //else if (zone == TriggerZoneType.Attack) { _machine.SwitchState(StateID.Attack); }
     }
 
     public override void Exit()
