@@ -1,18 +1,17 @@
 using UnityEngine;
 
-namespace Player
+namespace NPC
 {
-    [CreateAssetMenu(menuName = "Player/States/TakeDamage")]
-    public class TakeDamageState : PlayerState
+    [CreateAssetMenu(menuName = "NPC/States/TakeDamage")]
+    public class TakeDamageState : NPCState
     {
-        private PlayerStateID _previousState;
+        private NPCStateID _previousState;
 
         public override void Enter()
         {
             _previousState = _machine._stateManager.PrevStateID;
             Debug.Log($"Enter TakeDamageState. Previous: {_previousState}");
-            _machine._movementSystem.CanMove = false; // Disable movement
-            _machine._movementSystem.SetDirection(Vector2.zero);
+            _machine._agent.isStopped = true;
             _machine._animator.Play("TakeDamage");
         }
 
@@ -34,6 +33,7 @@ namespace Player
             {
                 Debug.Log("Damage animation finished!");
                 _machine.SwitchState(_previousState);
+                _machine._agent.isStopped = false;
             }
         }
 

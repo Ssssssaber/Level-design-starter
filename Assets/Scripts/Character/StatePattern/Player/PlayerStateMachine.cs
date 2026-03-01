@@ -14,12 +14,31 @@ namespace Player
             public PlayerState stateAsset;
         }
 
+        public class StateManager
+        {
+            public PlayerStateID CurrentStateID  {get ; private set; }
+            public PlayerStateID PrevStateID  {get ; private set; }
+
+            public StateManager(PlayerStateID initState)
+            {
+                CurrentStateID = initState;
+                PrevStateID = initState;
+            }
+
+            public void SetState(PlayerStateID newID)
+            {
+                PrevStateID = CurrentStateID;
+                CurrentStateID = newID;
+            }
+            
+        }
+
         public PlayerStateID InitStateID;
         public List<StateMapping> availableStates;
 
         private Dictionary<PlayerStateID, PlayerState> _stateCache = new Dictionary<PlayerStateID, PlayerState>();
         public PlayerState _currentState;
-        public PlayerStateID _currentStateID;
+        public StateManager _stateManager = new StateManager(PlayerStateID.Idle);
         public Animator _animator;
         public MovementSystem _movementSystem;
         private PlayerInput _playerInput;
@@ -65,7 +84,7 @@ namespace Player
             Debug.LogWarning($"PLAYER Switch state: {newID} from {_currentState}");
             _currentState?.Exit();
             _currentState = _stateCache[newID];
-            _currentStateID = newID;
+            _stateManager.SetState(newID);
             _currentState.Enter();
         }
 
@@ -87,7 +106,7 @@ namespace Player
 
         public override void OnTakeDamage()
         {
-            if (_currentStateID != PlayerStateID.Dying && _currentStateID != PlayerStateID.TakeDamage)
+            if (_stateManager.CurrentStateID != PlayerStateID.Dying && _stateManager.CurrentStateID != PlayerStateID.TakeDamage)
             {
                 SwitchState(PlayerStateID.TakeDamage);
             }

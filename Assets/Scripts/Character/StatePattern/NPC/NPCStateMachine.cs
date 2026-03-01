@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,13 +14,32 @@ namespace NPC
             public NPCState stateAsset;
         }
 
+        public class StateManager
+        {
+            public NPCStateID CurrentStateID  {get ; private set; }
+            public NPCStateID PrevStateID  {get ; private set; }
+
+            public StateManager(NPCStateID initState)
+            {
+                CurrentStateID = initState;
+                PrevStateID = initState;
+            }
+
+            public void SetState(NPCStateID newID)
+            {
+                PrevStateID = CurrentStateID;
+                CurrentStateID = newID;
+            }
+            
+        }
+
         public Transform Player;
         public NPCStateID InitStateID;
         public List<StateMapping> availableStates;
 
         private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
         public NPCState _currentState;
-        public NPCStateID _currentStateID;
+        public StateManager _stateManager = new StateManager(NPCStateID.Idle);
         public NavMeshAgent _agent;
         public Animator _animator;
         private SpriteRenderer _sprite;
@@ -65,7 +85,7 @@ namespace NPC
             _currentState?.Exit();
             _currentState = _stateCache[newID];
             _currentState.Enter();
-            _currentStateID = newID;
+            _stateManager.SetState(newID);
         }
 
         public void NotifyZoneEnter(NPCTriggerZoneType zone, Collider2D other)
@@ -97,7 +117,7 @@ namespace NPC
 
         public override void OnTakeDamage()
         {
-            if (_currentStateID != NPCStateID.Dying && _currentStateID != NPCStateID.TakeDamage)
+            if (_stateManager.CurrentStateID != NPCStateID.Dying && _stateManager.CurrentStateID != NPCStateID.TakeDamage)
             {
                 SwitchState(NPCStateID.TakeDamage);
             }
