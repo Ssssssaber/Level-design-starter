@@ -12,7 +12,6 @@ namespace Player
             Debug.Log("Enter DyingState");
             _machine._movementSystem.CanMove = false; // Disable movement
             _machine._movementSystem.SetDirection(Vector2.zero);
-            _machine._movementSystem.enabled = false; // Disable movement system
             _machine._animator.Play("Death");
         }
 
@@ -23,7 +22,7 @@ namespace Player
             {
                 // Respawn or remove the player
                 Debug.Log("Player respawn/removal logic here");
-                // Example: _machine.SwitchState(PlayerStateID.Idle); // If respawning
+                
             }
         }
 

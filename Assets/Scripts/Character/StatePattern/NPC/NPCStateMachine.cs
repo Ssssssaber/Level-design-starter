@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace NPC
 {
-    public class NPCStateMachine : MonoBehaviour
+    public class NPCStateMachine : StateMachine
     {
         [System.Serializable]
         public class StateMapping
@@ -19,12 +19,14 @@ namespace NPC
 
         private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
         public NPCState _currentState;
+        public NPCStateID _currentStateID;
         public NavMeshAgent _agent;
         public Animator _animator;
         private SpriteRenderer _sprite;
         public Vector2 _initialPosiiton;
 
-        private void Awake()
+        // Calls when awake in base class
+        protected override void Initialize()
         {
             _initialPosiiton = transform.position;
             _animator = GetComponent<Animator>();
@@ -63,6 +65,7 @@ namespace NPC
             _currentState?.Exit();
             _currentState = _stateCache[newID];
             _currentState.Enter();
+            _currentStateID = newID;
         }
 
         public void NotifyZoneEnter(NPCTriggerZoneType zone, Collider2D other)
@@ -83,6 +86,20 @@ namespace NPC
             if (_currentState is IAnimationEventHandler handler)
             {
                 handler.OnAnimationFinished(eventName);
+            }
+        }
+
+        public override void OnDeath()
+        {
+            Debug.Log("NPC died!");
+            SwitchState(NPCStateID.Dying);
+        }
+
+        public override void OnTakeDamage()
+        {
+            if (_currentStateID != NPCStateID.Dying && _currentStateID != NPCStateID.TakeDamage)
+            {
+                SwitchState(NPCStateID.TakeDamage);
             }
         }
     }

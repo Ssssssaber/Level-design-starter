@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerStateMachine : MonoBehaviour
+    public class PlayerStateMachine : StateMachine
     {
         [System.Serializable]
         public class StateMapping
@@ -26,7 +26,8 @@ namespace Player
         private InputSystem_Actions _actions;
         private SpriteRenderer _sprite;
 
-        private void Awake()
+        // calling this instead of awake
+        protected override void Initialize()
         {
             _movementSystem = GetComponent<MovementSystem>();
             _playerInput = GetComponent<PlayerInput>();
@@ -78,7 +79,13 @@ namespace Player
             _movementSystem.SetDirection(direction); // Update direction, but movement is controlled by the state
         }
 
-        public void TakeDamage()
+        public override void OnDeath()
+        {
+            Debug.Log("Player died!");
+            SwitchState(PlayerStateID.Dying);
+        }
+
+        public override void OnTakeDamage()
         {
             if (_currentStateID != PlayerStateID.Dying && _currentStateID != PlayerStateID.TakeDamage)
             {

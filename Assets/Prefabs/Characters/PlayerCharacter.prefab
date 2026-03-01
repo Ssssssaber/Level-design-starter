@@ -101,6 +101,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 163770300435652257}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2086544866307841948}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
 --- !u!1 &8735495828679846471 stripped
 GameObject:
@@ -268,3 +271,50 @@ MonoBehaviour:
   _currentStateID: 0
   _animator: {fileID: 0}
   _movementSystem: {fileID: 0}
+--- !u!114 &2086544866307841948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735495828679846471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362c180cf1633564a9bcf0d5cfbe32dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  _maxHealth: 3
+  _currentHealth: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 163770300435652257}
+        m_TargetAssemblyTypeName: Player.PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 163770300435652257}
+        m_TargetAssemblyTypeName: Player.PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnTakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

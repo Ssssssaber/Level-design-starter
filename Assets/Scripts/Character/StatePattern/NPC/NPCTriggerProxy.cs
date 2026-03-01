@@ -4,7 +4,7 @@ namespace NPC
 {
     public class NPCTriggerProxy : MonoBehaviour
     {
-        public NPCTriggerZoneType zoneType;
+        public NPCTriggerZoneType ZoneType;
         private NPCStateMachine _parentAI;
 
         void Awake()
@@ -14,12 +14,14 @@ namespace NPC
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _parentAI.NotifyZoneEnter(zoneType, other);
+            Debug.Log($"{ZoneType} entered by {other.gameObject.name}");
+            _parentAI.NotifyZoneEnter(ZoneType, other);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            _parentAI.NotifyZoneExit(zoneType, other);
+            Debug.Log($"{ZoneType} exited by {other.gameObject.name}");
+            _parentAI.NotifyZoneExit(ZoneType, other);
         }
     }
 }

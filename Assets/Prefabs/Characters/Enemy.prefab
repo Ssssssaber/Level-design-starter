@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159887e842b633c4583016015c04fc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerProxy
-  zoneType: 0
+  ZoneType: 0
 --- !u!1 &4516538213720777631
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159887e842b633c4583016015c04fc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerProxy
-  zoneType: 1
+  ZoneType: 1
 --- !u!1001 &8696497804185022627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +179,10 @@ PrefabInstance:
     - target: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,6 +255,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8082609959389887066}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4810855212922908410}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
 --- !u!4 &7980334235143561558 stripped
 Transform:
@@ -286,6 +293,7 @@ MonoBehaviour:
   - id: 3
     stateAsset: {fileID: 11400000, guid: 5e15594e4cab8284eaf37aaa70a61339, type: 2}
   _currentState: {fileID: 0}
+  _currentStateID: 0
   _agent: {fileID: 0}
   _animator: {fileID: 0}
   _initialPosiiton: {x: 0, y: 0}
@@ -333,3 +341,50 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4810855212922908410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551794574967235073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362c180cf1633564a9bcf0d5cfbe32dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  _maxHealth: 3
+  _currentHealth: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7096434708639334230}
+        m_TargetAssemblyTypeName: NPC.NPCStateMachine, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7096434708639334230}
+        m_TargetAssemblyTypeName: NPC.NPCStateMachine, Assembly-CSharp
+        m_MethodName: OnTakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

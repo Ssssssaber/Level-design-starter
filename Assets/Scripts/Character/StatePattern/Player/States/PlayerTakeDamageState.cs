@@ -9,8 +9,8 @@ namespace Player
 
         public override void Enter()
         {
-            Debug.Log("Enter TakeDamageState");
-            _previousState = _machine._currentStateID;
+            _previousState = PlayerStateID.Idle;
+            Debug.Log($"Enter TakeDamageState. Previous: {_previousState}");
             _machine._movementSystem.CanMove = false; // Disable movement
             _machine._movementSystem.SetDirection(Vector2.zero);
             _machine._animator.Play("TakeDamage");
