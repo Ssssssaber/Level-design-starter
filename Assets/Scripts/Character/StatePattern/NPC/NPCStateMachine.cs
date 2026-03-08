@@ -100,21 +100,12 @@ namespace NPC
             _currentState?.OnZoneExit(zone, other);
         }
 
-        public void OnAnimationFinished(string eventName)
+        public void OnAnimationEvent(string eventName)
         {
-            Debug.Log($"Animation Finish: {eventName}");
+            Debug.Log($"Animation Event: {eventName}");
             if (_currentState is IAnimationEventHandler handler)
             {
-                handler.OnAnimationFinished(eventName);
-            }
-        }
-
-        public void OnAnimationStarted(string eventName)
-        {
-            Debug.Log($"Animation Start: {eventName}");
-            if (_currentState is IAnimationEventHandler handler)
-            {
-                handler.OnAnimationStarted(eventName);
+                handler.OnAnimationEvent(eventName);
             }
         }
 

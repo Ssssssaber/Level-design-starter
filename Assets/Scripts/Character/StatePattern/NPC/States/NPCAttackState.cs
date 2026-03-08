@@ -34,26 +34,25 @@ namespace NPC
                 _targetInRange = false;
             }
         }
-
-        public override void OnAnimationStarted(string animName)
+        public override void OnAnimationEvent(string animName)
         {
-            if (animName == "Attack")
+            switch (animName)
             {
-                FacePlayer();
-            }
-        }
-
-        public override void OnAnimationFinished(string animName)
-        {
-            if (animName == "Attack" && !_targetInRange)
-            {
-                ExitAttackState();
+                case "AttackStarted":
+                    {
+                        FacePlayer();
+                        break;
+                    }
+                case "AttackFinished":
+                    {
+                        if (!_targetInRange) ExitAttackState();
+                        break;
+                    }
             }
         }
 
         private void ExitAttackState()
         {
-            Debug.LogError("exit attack)");
             _machine._agent.isStopped = false;
             _machine.SwitchState(NPCStateID.Chase);
         }

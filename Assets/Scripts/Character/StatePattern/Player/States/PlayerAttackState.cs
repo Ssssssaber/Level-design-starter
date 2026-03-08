@@ -15,7 +15,7 @@ namespace Player
 
         public override void UpdateState() { }
 
-        public override void OnAnimationFinished(string animName)
+        public override void OnAnimationEvent(string animName)
         {
             if (animName == "Attack")
             {

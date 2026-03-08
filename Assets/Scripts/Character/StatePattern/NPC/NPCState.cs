@@ -22,8 +22,7 @@ namespace NPC
         public virtual void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other) { }
         public virtual void OnZoneExit(NPCTriggerZoneType zone, Collider2D other) { }
 
-        public virtual void OnAnimationFinished(string animName) { }
+        public virtual void OnAnimationEvent(string animName) { }
 
-        public virtual void OnAnimationStarted(string animName) { }
     }
 }

@@ -16,7 +16,6 @@ namespace Player
         public abstract void UpdateState();
         public abstract void Exit();
 
-        public virtual void OnAnimationFinished(string animName) { }
-        public void OnAnimationStarted(string animName) { }
+        public virtual void OnAnimationEvent(string animName) { }
     }
 }
