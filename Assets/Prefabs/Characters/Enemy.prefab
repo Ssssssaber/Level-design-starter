@@ -150,7 +150,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!114 &9217090549569706394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4699119981640825015}
   - component: {fileID: 6417160672514014276}
-  m_Layer: 0
+  - component: {fileID: 7357505744860817388}
+  m_Layer: 9
   m_Name: DamageZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,6 +243,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7790637, y: 1.3953314}
   m_EdgeRadius: 0
+--- !u!114 &7357505744860817388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175595668355948505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a83f8d1f77a1438c991ebcc86d182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health.DamageDealer
+  _damageAmount: 1
 --- !u!1001 &8696497804185022627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,12 +321,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -8054786874749993974, guid: ec5005af490ab1e41ae18907002406b4, type: 3}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.0625
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.0625
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -339,6 +357,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4810855212922908410}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9021978811065445501}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
 --- !u!4 &7980334235143561558 stripped
 Transform:
@@ -473,3 +494,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9021978811065445501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551794574967235073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ed3677464c0514db691ff797a2f12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health.AttackHitbox
+  _damage: 1
+  _hitboxCollider: {fileID: 7357505744860817388}
