@@ -1,5 +1,8 @@
-public interface IDamageable
+namespace Health
 {
-    void TakeDamage(uint amount);
-    void Heal(uint amount);
+    public interface IDamageable
+    {
+        void TakeDamage(uint amount);
+        void Heal(uint amount);
+    }
 }

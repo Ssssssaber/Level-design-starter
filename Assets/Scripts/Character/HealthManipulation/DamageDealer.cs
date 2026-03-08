@@ -1,14 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+namespace Health
 {
-    [SerializeField] private uint _damageAmount = 1;
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public class DamageDealer : MonoBehaviour
     {
-        if (other.TryGetComponent(out IDamageable damageable))
+        [SerializeField] private uint _damageAmount = 1;
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            damageable.TakeDamage(_damageAmount);
+            if (other.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(_damageAmount);
+            }
         }
     }
 }
+

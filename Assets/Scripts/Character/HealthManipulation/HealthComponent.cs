@@ -2,50 +2,53 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthComponent : MonoBehaviour, IDamageable
+namespace Health
 {
-    [SerializeField] private int _maxHealth = 3;
-    [SerializeField] private int _currentHealth;
-
-    public UnityEvent<int> OnHealthChanged; // currentHealth
-    public UnityEvent OnDeath;
-    public UnityEvent OnTakeDamage;
-
-    public int CurrentHealth => _currentHealth;
-    public int MaxHealth => _maxHealth;
-    public bool IsAlive => _currentHealth > 0;
-
-    private void Awake()
+    public class HealthComponent : MonoBehaviour, IDamageable
     {
-        _currentHealth = _maxHealth;
-    }
+        [SerializeField] private int _maxHealth = 3;
+        [SerializeField] private int _currentHealth;
 
-    public void TakeDamage(uint damage)
-    {
-        if (!IsAlive) return;
+        public UnityEvent<int> OnHealthChanged; // currentHealth
+        public UnityEvent OnDeath;
+        public UnityEvent OnTakeDamage;
 
-        if (_currentHealth - damage <= 0)
+        public int CurrentHealth => _currentHealth;
+        public int MaxHealth => _maxHealth;
+        public bool IsAlive => _currentHealth > 0;
+
+        private void Awake()
         {
-            Die();
+            _currentHealth = _maxHealth;
         }
 
-        _currentHealth = _currentHealth - (int)damage;
-        OnHealthChanged?.Invoke(_currentHealth);
-        OnTakeDamage?.Invoke();
-    }
+        public void TakeDamage(uint damage)
+        {
+            if (!IsAlive) return;
 
-    public void Heal(uint amount)
-    {
-        _currentHealth = _currentHealth + (int)amount > _maxHealth ? _maxHealth : _currentHealth + (int)amount;
-        OnHealthChanged?.Invoke(_currentHealth);
-    }
+            if (_currentHealth - damage <= 0)
+            {
+                Die();
+            }
 
-    public void Die()
-    {
-        if (!IsAlive) return;
+            _currentHealth = _currentHealth - (int)damage;
+            OnHealthChanged?.Invoke(_currentHealth);
+            OnTakeDamage?.Invoke();
+        }
 
-        _currentHealth = 0;
-        OnDeath?.Invoke();
-        Debug.Log($"{gameObject.name} died!");
+        public void Heal(uint amount)
+        {
+            _currentHealth = _currentHealth + (int)amount > _maxHealth ? _maxHealth : _currentHealth + (int)amount;
+            OnHealthChanged?.Invoke(_currentHealth);
+        }
+
+        public void Die()
+        {
+            if (!IsAlive) return;
+
+            _currentHealth = 0;
+            OnDeath?.Invoke();
+            Debug.Log($"{gameObject.name} died!");
+        }
     }
 }

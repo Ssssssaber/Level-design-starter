@@ -1,33 +1,39 @@
 using TMPro.EditorUtilities;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Movement;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    private MovementSystem _movementSystem;
-    private PlayerInput _playerInput;
-    private InputSystem_Actions _actions;
-    private SpriteRenderer _sprite;
 
-    void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        _movementSystem = GetComponent<MovementSystem>();
-        _playerInput = GetComponent<PlayerInput>();
-        _sprite = GetComponent<SpriteRenderer>();
+        private MovementSystem _movementSystem;
+        private PlayerInput _playerInput;
+        private InputSystem_Actions _actions;
+        private SpriteRenderer _sprite;
 
-        _actions = new InputSystem_Actions();
+        void Awake()
+        {
+            _movementSystem = GetComponent<MovementSystem>();
+            _playerInput = GetComponent<PlayerInput>();
+            _sprite = GetComponent<SpriteRenderer>();
 
-        _playerInput.actions = _actions.asset;
+            _actions = new InputSystem_Actions();
 
-        _actions.Player.Move.performed += OnMove;
-        _actions.Player.Move.canceled += OnMove;
-    }
+            _playerInput.actions = _actions.asset;
 
-    private void OnMove(InputAction.CallbackContext context)
-    {
-        var direction = context.ReadValue<Vector2>().normalized;
+            _actions.Player.Move.performed += OnMove;
+            _actions.Player.Move.canceled += OnMove;
+        }
 
-        SpriteUtils.SetFlipX(transform, direction.x < 0);
-        _movementSystem.SetDirection(direction);
+        private void OnMove(InputAction.CallbackContext context)
+        {
+            var direction = context.ReadValue<Vector2>().normalized;
+
+            SpriteUtils.SetFlipX(transform, direction.x < 0);
+            _movementSystem.SetDirection(direction);
+        }
     }
 }
