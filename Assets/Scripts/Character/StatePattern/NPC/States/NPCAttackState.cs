@@ -35,6 +35,14 @@ namespace NPC
             }
         }
 
+        public override void OnAnimationStarted(string animName)
+        {
+            if (animName == "Attack")
+            {
+                FacePlayer();
+            }
+        }
+
         public override void OnAnimationFinished(string animName)
         {
             if (animName == "Attack" && !_targetInRange)
@@ -45,8 +53,14 @@ namespace NPC
 
         private void ExitAttackState()
         {
+            Debug.LogError("exit attack)");
             _machine._agent.isStopped = false;
             _machine.SwitchState(NPCStateID.Chase);
+        }
+
+        private void FacePlayer()
+        {
+            _machine._sprite.flipX = (_machine.Player.transform.position.x - _machine.transform.position.x) < 0;
         }
 
         public override void Exit()

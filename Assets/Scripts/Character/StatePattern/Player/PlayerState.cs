@@ -17,5 +17,6 @@ namespace Player
         public abstract void Exit();
 
         public virtual void OnAnimationFinished(string animName) { }
+        public void OnAnimationStarted(string animName) { }
     }
 }

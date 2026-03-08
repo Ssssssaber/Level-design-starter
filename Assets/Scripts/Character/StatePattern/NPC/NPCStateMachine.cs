@@ -42,7 +42,7 @@ namespace NPC
         public StateManager _stateManager = new StateManager(NPCStateID.Idle);
         public NavMeshAgent _agent;
         public Animator _animator;
-        private SpriteRenderer _sprite;
+        public SpriteRenderer _sprite;
         public Vector2 _initialPosiiton;
 
         // Calls when awake in base class
@@ -100,12 +100,21 @@ namespace NPC
             _currentState?.OnZoneExit(zone, other);
         }
 
-        public void OnAnimationEvent(string eventName)
+        public void OnAnimationFinished(string eventName)
         {
-            Debug.Log($"Animation Event: {eventName}");
+            Debug.Log($"Animation Finish: {eventName}");
             if (_currentState is IAnimationEventHandler handler)
             {
                 handler.OnAnimationFinished(eventName);
+            }
+        }
+
+        public void OnAnimationStarted(string eventName)
+        {
+            Debug.Log($"Animation Start: {eventName}");
+            if (_currentState is IAnimationEventHandler handler)
+            {
+                handler.OnAnimationStarted(eventName);
             }
         }
 

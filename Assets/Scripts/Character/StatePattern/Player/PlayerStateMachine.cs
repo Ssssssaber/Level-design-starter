@@ -112,12 +112,21 @@ namespace Player
             }
         }
 
-        public void OnAnimationEvent(string eventName)
+        public void OnAnimationFinished(string eventName)
         {
-            Debug.Log($"Animation Event: {eventName}");
+            Debug.Log($"Animation Finish: {eventName}");
             if (_currentState is IAnimationEventHandler handler)
             {
                 handler.OnAnimationFinished(eventName);
+            }
+        }
+
+        public void OnAnimationStarted(string eventName)
+        {
+            Debug.Log($"Animation Start: {eventName}");
+            if (_currentState is IAnimationEventHandler handler)
+            {
+                handler.OnAnimationStarted(eventName);
             }
         }
     }
