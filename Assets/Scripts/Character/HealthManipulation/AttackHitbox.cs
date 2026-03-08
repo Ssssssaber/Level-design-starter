@@ -5,7 +5,7 @@ namespace Health
 {
     public class AttackHitbox : MonoBehaviour
     {
-        [SerializeField] private uint _damage = 1;
+        [SerializeField] private int _damage = 1;
         [SerializeField] private DamageDealer _hitboxCollider;
 
         private void Awake()

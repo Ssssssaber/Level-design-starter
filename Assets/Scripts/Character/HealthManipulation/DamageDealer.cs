@@ -6,7 +6,7 @@ namespace Health
     [RequireComponent(typeof(Collider2D))]
     public class DamageDealer : MonoBehaviour
     {
-        [SerializeField] private uint _damageAmount = 1;
+        [SerializeField] private int _damageAmount = 1;
         private Collider2D _attachedCollider;
 
         private void Awake()
@@ -15,7 +15,7 @@ namespace Health
             _attachedCollider.isTrigger = true;
         }
 
-        public void SetDamage(uint damage)
+        public void SetDamage(int damage)
         {
             _damageAmount = damage;
         }

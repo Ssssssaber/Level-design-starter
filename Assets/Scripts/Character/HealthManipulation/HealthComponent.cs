@@ -22,7 +22,7 @@ namespace Health
             _currentHealth = _maxHealth;
         }
 
-        public void TakeDamage(uint damage)
+        public void TakeDamage(int damage)
         {
             if (!IsAlive) return;
 
@@ -36,7 +36,7 @@ namespace Health
             OnTakeDamage?.Invoke();
         }
 
-        public void Heal(uint amount)
+        public void Heal(int amount)
         {
             _currentHealth = _currentHealth + (int)amount > _maxHealth ? _maxHealth : _currentHealth + (int)amount;
             OnHealthChanged?.Invoke(_currentHealth);
