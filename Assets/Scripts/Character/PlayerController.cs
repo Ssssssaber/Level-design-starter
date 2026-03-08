@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         var direction = context.ReadValue<Vector2>().normalized;
 
-        _sprite.flipX = direction.x < 0; 
+        SpriteUtils.SetFlipX(transform, direction.x < 0);
         _movementSystem.SetDirection(direction);
     }
 }

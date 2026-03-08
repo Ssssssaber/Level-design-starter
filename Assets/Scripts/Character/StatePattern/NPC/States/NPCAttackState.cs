@@ -60,7 +60,10 @@ namespace NPC
 
         private void FacePlayer()
         {
-            _machine._sprite.flipX = (_machine.Player.transform.position.x - _machine.transform.position.x) < 0;
+            SpriteUtils.SetFlipX(
+                _machine.transform,
+                (_machine.Player.transform.position.x - _machine.transform.position.x) < 0
+            );
         }
 
         public override void Exit()

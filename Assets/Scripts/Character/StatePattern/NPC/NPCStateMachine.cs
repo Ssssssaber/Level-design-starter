@@ -73,7 +73,7 @@ namespace NPC
         {
             if (!_agent.isStopped)
             {
-                _sprite.flipX = _agent.velocity.x < 0;
+                SpriteUtils.SetFlipX(transform, _agent.velocity.x < 0);
             }
 
             _currentState?.UpdateState();

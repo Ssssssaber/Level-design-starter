@@ -93,7 +93,7 @@ namespace Player
             var direction = context.ReadValue<Vector2>().normalized;
             if (_movementSystem.CanMove)
             {
-                _sprite.flipX = direction.x < 0;
+                SpriteUtils.SetFlipX(transform, direction.x < 0);
             }
             _movementSystem.SetDirection(direction); // Update direction, but movement is controlled by the state
         }
