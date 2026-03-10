@@ -15,9 +15,9 @@ TagManager:
   - GeneralAttack
   - Enemy
   - EnemyAttack
-  - 
-  - 
-  - 
+  - Interactor
+  - Interactable
+  - Collectable
   - 
   - 
   - 

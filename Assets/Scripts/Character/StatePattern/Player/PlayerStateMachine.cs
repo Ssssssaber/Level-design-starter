@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Movement;
+using Interactable;
 
 namespace Player
 {
@@ -39,8 +40,9 @@ namespace Player
         private Dictionary<PlayerStateID, PlayerState> _stateCache = new Dictionary<PlayerStateID, PlayerState>();
         public PlayerState _currentState;
         public StateManager _stateManager = new StateManager(PlayerStateID.Idle);
-        public Animator _animator;
-        public MovementSystem _movementSystem;
+        [HideInInspector] public Animator _animator;
+        [HideInInspector] public MovementSystem _movementSystem;
+        [SerializeField] private InteractionDetector _interact;
         private PlayerInput _playerInput;
         private InputSystem_Actions _actions;
         private SpriteRenderer _sprite;
@@ -60,6 +62,7 @@ namespace Player
             _actions.Player.Move.performed += OnMove;
             _actions.Player.Move.canceled += OnMove;
             _actions.Player.Attack.performed += _ => SwitchState(PlayerStateID.Attack);
+            _actions.Player.Use.performed += _interact.OnInteract;
 
             foreach (var mapping in availableStates)
             {
@@ -81,7 +84,7 @@ namespace Player
 
         public void SwitchState(PlayerStateID newID)
         {
-            Debug.LogWarning($"PLAYER Switch state: {newID} from {_currentState}");
+            //Debug.LogWarning($"PLAYER Switch state: {newID} from {_currentState}");
             _currentState?.Exit();
             _currentState = _stateCache[newID];
             _stateManager.SetState(newID);
