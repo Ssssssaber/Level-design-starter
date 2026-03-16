@@ -18,14 +18,14 @@ namespace Interactable
             UdpateSprite(_toggled);
         }
 
-        public bool CanInteract()
+        public bool CanInteract(GameObject interactor)
         {
             return true;
         }
 
-        public void Interact()
+        public void Interact(GameObject interactor)
         {
-            if (!CanInteract()) return;
+            if (!CanInteract(interactor)) return;
 
             _toggled = !_toggled;
             UdpateSprite(_toggled);
@@ -34,6 +34,11 @@ namespace Interactable
         private void UdpateSprite(bool toggled)
         {
             _sprite.sprite = toggled ? _onState : _offState;
+        }
+
+        public string GetTag()
+        {
+            return "FloorTorch";
         }
     }
 }

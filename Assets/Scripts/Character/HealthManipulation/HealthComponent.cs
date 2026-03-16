@@ -22,9 +22,9 @@ namespace Health
             _currentHealth = _maxHealth;
         }
 
-        public void TakeDamage(int damage)
+        public bool TakeDamage(int damage)
         {
-            if (!IsAlive) return;
+            if (!IsAlive) return false;
 
             if (_currentHealth - damage <= 0)
             {
@@ -34,12 +34,22 @@ namespace Health
             _currentHealth = _currentHealth - (int)damage;
             OnHealthChanged?.Invoke(_currentHealth);
             OnTakeDamage?.Invoke();
+
+            return true;
         }
 
-        public void Heal(int amount)
+        public bool Heal(int amount)
         {
+            bool maxedAlready = _currentHealth  >= _maxHealth;
+            
+            if (maxedAlready)
+            {
+                return maxedAlready;
+            }
+
             _currentHealth = _currentHealth + (int)amount > _maxHealth ? _maxHealth : _currentHealth + (int)amount;
             OnHealthChanged?.Invoke(_currentHealth);
+            return true;
         }
 
         public void Die()

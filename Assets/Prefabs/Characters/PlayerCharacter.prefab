@@ -402,6 +402,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5543011255552775136}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2996717060808838841}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
 --- !u!4 &7001816780209940752 stripped
 Transform:
@@ -647,3 +650,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health.AttackHitbox
   _damage: 1
   _hitboxCollider: {fileID: 4210427243054584959}
+--- !u!114 &2996717060808838841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735495828679846471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2efd2361b0d3e4e853e527c401ee18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory.InventoryManager
+  _maxCapacity: 10
+  _currentCapacity: 0
+  OnInteractableAdded:
+    m_PersistentCalls:
+      m_Calls: []

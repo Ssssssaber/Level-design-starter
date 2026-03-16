@@ -2,7 +2,7 @@ namespace Health
 {
     public interface IDamageable
     {
-        void TakeDamage(int amount);
-        void Heal(int amount);
+        bool TakeDamage(int amount);
+        bool Heal(int amount);
     }
 }

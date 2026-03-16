@@ -12,14 +12,14 @@ namespace Interactable
         [SerializeField] private Sprite _closedSprite;
         [SerializeField] private Sprite _openedSprite;
 
-        public bool CanInteract()
+        public bool CanInteract(GameObject interactor)
         {
             return !IsOpened;
         }
 
-        public void Interact()
+        public void Interact(GameObject interactor)
         {
-            if (!CanInteract()) return;
+            if (!CanInteract(interactor)) return;
             OpenChest();
         }
 
@@ -45,6 +45,11 @@ namespace Interactable
                return;
             }
             _spriteRef.sprite = _closedSprite;
+        }
+
+        public string GetTag()
+        {
+            return "Chest";
         }
     }
 }

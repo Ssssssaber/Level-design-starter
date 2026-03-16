@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,9 +8,9 @@ namespace Interactable
     public class Door : MonoBehaviour, IInteractable
     {
         [Header("Visuals")]
-        [SerializeField] private Sprite _onState;
-        [SerializeField] private Sprite _offState;
-        [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] protected Sprite _onState;
+        [SerializeField] protected Sprite _offState;
+        [SerializeField] protected SpriteRenderer _sprite;
 
         [Header("Colliders")]
         [SerializeField] BoxCollider2D _collider;
@@ -21,24 +22,24 @@ namespace Interactable
 
         [Header("Debug")]
         [Tooltip("On Awake() will update its state")]
-        [SerializeField] private bool _toggled = true;
+        [SerializeField] protected bool _toggled = true;
 
         
-        public bool CanInteract()
+        public bool CanInteract(GameObject interactor)
         {
             return  !_doorStuck;
         }
 
-        public void Interact()
+        public virtual void Interact(GameObject interactor)
         {
-            if (!CanInteract()) return;
+            if (!CanInteract(interactor)) return;
 
             _toggled = !_toggled;
             UdpateSprite(_toggled);
             UpdateColliderObstacle(_toggled);
         }
 
-        private void UpdateColliderObstacle(bool toggled)
+        protected void UpdateColliderObstacle(bool toggled)
         {
             _collider.enabled = toggled;
         }
@@ -46,6 +47,11 @@ namespace Interactable
         private void UdpateSprite(bool toggled)
         {
             _sprite.sprite = toggled ? _onState : _offState;
+        }
+
+        public string GetTag()
+        {
+            return "Door";
         }
     }
 }

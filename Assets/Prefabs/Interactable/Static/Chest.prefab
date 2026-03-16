@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf2deda8fcf2484589c888b34b8bfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable.Chest
-  _itemPrefab: {fileID: 6303329161477336579, guid: 380e2f7498755384da8a23feeb57f6d1, type: 3}
+  _itemPrefab: {fileID: 221053334295487170, guid: d8d05547a1bf86547a8a6127daf90b61, type: 3}
   _spriteRef: {fileID: 3154893011484319203}
   _closedSprite: {fileID: 2106816439651058914, guid: df77fd10bb647414e895f5d63151a72f, type: 3}
   _openedSprite: {fileID: -8863278788783210857, guid: 000852b97cd2d4c4e93d910540feeaa1, type: 3}
