@@ -15,11 +15,12 @@ public class HeartUIManager : MonoBehaviour
     private void Awake()
     {
         _gridLayout = GetComponent<GridLayoutGroup>();
-        _playerHealth.OnHealthChanged.AddListener(UpdateHearts);
     }
 
     private void Start()
     {
+        _playerHealth = GameManager.Instance.Player.GetComponent<HealthComponent>();
+        _playerHealth.OnHealthChanged.AddListener(UpdateHearts);
         UpdateHearts(_playerHealth.CurrentHealth);
     }
 
