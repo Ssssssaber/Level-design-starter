@@ -14,7 +14,7 @@ namespace NPC
 
         public override void UpdateState()
         {
-            _machine._agent.SetDestination(_machine.Player.position);
+            _machine._agent.SetDestination(GameManager.Instance.Player.transform.position);
         }
 
         public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)

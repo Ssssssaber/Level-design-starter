@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace NPC
 {
@@ -6,10 +7,18 @@ namespace NPC
     {
         public NPCTriggerZoneType ZoneType;
         private NPCStateMachine _parentAI;
+        private CircleCollider2D _collider;
 
         void Awake()
         {
             _parentAI = GetComponentInParent<NPCStateMachine>();
+            _collider = GetComponent<CircleCollider2D>();
+        }
+
+        public bool IsPlayerIn()
+        {
+            Vector2 playerPos = GameManager.Instance.Player.transform.position;
+            return _collider.OverlapPoint(playerPos);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

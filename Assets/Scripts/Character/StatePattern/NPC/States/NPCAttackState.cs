@@ -61,7 +61,7 @@ namespace NPC
         {
             SpriteUtils.SetFlipX(
                 _machine.transform,
-                (_machine.Player.transform.position.x - _machine.transform.position.x) < 0
+                (GameManager.Instance.Player.transform.position.x - _machine.transform.position.x) < 0
             );
         }
 

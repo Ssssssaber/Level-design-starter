@@ -365,6 +365,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 9021978811065445501}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+--- !u!212 &7719035418686210 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8695121324811092897, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+  m_PrefabInstance: {fileID: 8696497804185022627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7980334235143561558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
@@ -387,7 +392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be20bfac6843b784ea82b791d8fc8c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateMachine
-  Player: {fileID: 0}
   InitStateID: 0
   availableStates:
   - id: 0
@@ -402,10 +406,12 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: c069367a90dc02c499c8cbdbea8e9b63, type: 2}
   - id: 5
     stateAsset: {fileID: 11400000, guid: 54a789451ae132143ae4f535133fe30b, type: 2}
+  _visionZone: {fileID: 4404837130990217661}
+  _attackZone: {fileID: 9217090549569706394}
   _currentState: {fileID: 0}
   _agent: {fileID: 0}
   _animator: {fileID: 0}
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 7719035418686210}
   _initialPosiiton: {x: 0, y: 0}
 --- !u!95 &5188136792311771159
 Animator:
@@ -463,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362c180cf1633564a9bcf0d5cfbe32dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  _maxHealth: 3
+  _maxHealth: 10
   _currentHealth: 0
   OnHealthChanged:
     m_PersistentCalls:

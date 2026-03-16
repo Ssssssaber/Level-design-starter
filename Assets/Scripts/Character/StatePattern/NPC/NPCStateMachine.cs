@@ -33,9 +33,10 @@ namespace NPC
             
         }
 
-        public Transform Player;
         public NPCStateID InitStateID;
         public List<StateMapping> availableStates;
+        public NPCTriggerProxy _visionZone;
+        public NPCTriggerProxy _attackZone;
 
         private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
         public NPCState _currentState;
@@ -120,6 +121,23 @@ namespace NPC
             if (_stateManager.CurrentStateID != NPCStateID.Dying && _stateManager.CurrentStateID != NPCStateID.TakeDamage)
             {
                 SwitchState(NPCStateID.TakeDamage);
+            }
+        }
+
+        public void AllStateCheck()
+        {
+            if (_attackZone.IsPlayerIn())
+            {
+                SwitchState(NPCStateID.Attack);
+            }
+            else if (_visionZone.IsPlayerIn())
+            {
+                SwitchState(NPCStateID.Chase);
+            }
+            else
+            {
+                _agent.SetDestination(_initialPosiiton);
+                SwitchState(NPCStateID.Move);
             }
         }
     }
