@@ -18,6 +18,7 @@ namespace NPC
 
         public override void UpdateState()
         {
+
         }
 
         public override void Exit()

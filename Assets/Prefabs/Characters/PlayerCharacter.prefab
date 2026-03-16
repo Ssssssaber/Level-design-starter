@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health.DamageDealer
   _damageAmount: 1
+  _enabledFromStart: 0
 --- !u!1 &3805631564055501980
 GameObject:
   m_ObjectHideFlags: 0

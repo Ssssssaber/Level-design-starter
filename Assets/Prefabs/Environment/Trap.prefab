@@ -222,3 +222,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health.DamageDealer
   _damageAmount: 1
+  _enabledFromStart: 0
