@@ -21,7 +21,7 @@ namespace Interactable
             {
                 if (health.Heal(HealAmount))
                 {
-                    Destroy(gameObject);
+                    Destroy(transform.parent.gameObject);
                 }
             }
             else

@@ -13,17 +13,11 @@ namespace NPC
             Debug.Log("Enter DyingState");
             _machine._agent.isStopped = true;
             _machine._animator.Play("Death");
+            _machine.SetEnabledColliders(false);
         }
 
         public override void UpdateState()
         {
-            _deathTimer -= Time.deltaTime;
-            if (_deathTimer <= 0f)
-            {
-                // Respawn or remove the player
-                Debug.Log("NPC respawn/removal logic here");
-                
-            }
         }
 
         public override void Exit()

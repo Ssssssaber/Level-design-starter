@@ -140,5 +140,14 @@ namespace NPC
                 SwitchState(NPCStateID.Move);
             }
         }
+        
+        public void SetEnabledColliders(bool value)
+        {
+            var allColliders = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in allColliders)
+            {
+                collider.enabled = value;
+            }
+        }
     }
 }

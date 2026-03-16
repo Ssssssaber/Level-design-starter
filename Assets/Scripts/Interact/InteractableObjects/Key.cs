@@ -16,7 +16,11 @@ namespace Interactable
             {
                 if (inventory.AddInteractable(this))
                 {
-                    Destroy(gameObject);
+                    Destroy(transform.parent.gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("key was not added to inventory");
                 }
             }
             else
