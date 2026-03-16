@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         InitPlayer(Instantiate(_playerPrefab, _spawnTransform.position, Quaternion.identity));
         Camera = Instantiate(_cameraPrefab, _spawnTransform.position, Quaternion.identity);
         Camera.m_Follow = Player.transform;
+        _spawnTransform.gameObject.SetActive(false);
     }
 
     public void InitPlayer(PlayerStateMachine player)
