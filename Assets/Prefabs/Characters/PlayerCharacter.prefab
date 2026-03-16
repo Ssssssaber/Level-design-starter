@@ -233,7 +233,7 @@ PrefabInstance:
     - target: {fileID: 2492830121191902945, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: d71adafdc33d50541b4982786356b5d8, type: 2}
+      objectReference: {fileID: 9100000, guid: 27a20f6a93a9d9149908b155726f4b00, type: 2}
     - target: {fileID: 4457742657596335119, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -255,20 +255,32 @@ PrefabInstance:
       value: -0.40138292
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.875
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.125
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8695121324811092897, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1504920921590492608, guid: f282445b5c9972544b842996a37cde0c, type: 3}
+      objectReference: {fileID: 7388399842426930641, guid: 5763ca07be14f264e97da5d87eeef1d2, type: 3}
     - target: {fileID: 8810706494194376019, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47
+      value: -0.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -476,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362c180cf1633564a9bcf0d5cfbe32dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  _maxHealth: 3
+  _maxHealth: 10
   _currentHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
