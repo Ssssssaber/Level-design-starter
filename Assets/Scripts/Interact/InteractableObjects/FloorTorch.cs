@@ -1,8 +1,9 @@
+using PuzzleSystem;
 using UnityEngine;
 
 namespace Interactable
 {
-    public class FloorTorch : MonoBehaviour, IInteractable
+    public class FloorTorch : MonoBehaviour, IInteractable, IPuzzleElement
     {
         [Header("Visuals")]
         [SerializeField] private Sprite _onState;
@@ -13,8 +14,16 @@ namespace Interactable
         [Tooltip("On Awake() will update its state")]
         [SerializeField] private bool _toggled = true;
 
+        public PuzzleState CurrentState => _toggled ? PuzzleState.On : PuzzleState.Off;
+
         private void Awake()
         {
+            UdpateSprite(_toggled);
+        }
+
+        public void SetState(PuzzleState state)
+        {
+            _toggled = state == PuzzleState.On;
             UdpateSprite(_toggled);
         }
 
@@ -29,6 +38,7 @@ namespace Interactable
 
             _toggled = !_toggled;
             UdpateSprite(_toggled);
+            PuzzleEvents.NotifyStateChanged(this);
         }
 
         private void UdpateSprite(bool toggled)

@@ -44,7 +44,7 @@ namespace Interactable
             _collider.enabled = toggled;
         }
 
-        private void UdpateSprite(bool toggled)
+        protected void UdpateSprite(bool toggled)
         {
             _sprite.sprite = toggled ? _onState : _offState;
         }
