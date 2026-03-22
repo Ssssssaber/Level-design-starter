@@ -56,6 +56,10 @@ namespace NPC
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
+            _agent.radius = 0.3f;
+            _agent.avoidancePriority = Random.Range(0, 100);
+            _agent.autoBraking = true;
+            _agent.autoRepath = true;
 
             foreach (var mapping in availableStates)
             {
