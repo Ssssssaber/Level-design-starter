@@ -365,12 +365,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9021978811065445501}
+    - targetCorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1772147525795435477}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
 --- !u!212 &7719035418686210 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8695121324811092897, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
   m_PrefabInstance: {fileID: 8696497804185022627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &408356516659825945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+  m_PrefabInstance: {fileID: 8696497804185022627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1772147525795435477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408356516659825945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42a063f148095d478631e8b13fddac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteFlasher
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _flashDuration: 0.1
+  _fadeDuration: 0.3
+  OnFlashRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &7980334235143561558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
@@ -474,7 +500,19 @@ MonoBehaviour:
   _currentHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1772147525795435477}
+        m_TargetAssemblyTypeName: SpriteFlasher, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
       m_Calls:

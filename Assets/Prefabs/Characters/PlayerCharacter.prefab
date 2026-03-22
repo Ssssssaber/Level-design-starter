@@ -406,7 +406,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2996717060808838841}
+    - targetCorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6902794921960763045}
   m_SourcePrefab: {fileID: 100100000, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+--- !u!1 &738136110553564511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+  m_PrefabInstance: {fileID: 8585143308689291493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6902794921960763045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738136110553564511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42a063f148095d478631e8b13fddac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteFlasher
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _flashDuration: 0.1
+  _fadeDuration: 0.3
+  OnFlashRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &7001816780209940752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
@@ -570,8 +596,6 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: 1dc3029406f758641b62a347b8615534, type: 2}
   - id: 3
     stateAsset: {fileID: 11400000, guid: aeef890a9a0a35f43a767c4e5b4e30bf, type: 2}
-  - id: 4
-    stateAsset: {fileID: 11400000, guid: 9e4968a6d69b6a34fae3dfc1cf52e79a, type: 2}
   - id: 5
     stateAsset: {fileID: 11400000, guid: 8d6778191852177438995910349c67e1, type: 2}
   _currentState: {fileID: 0}
@@ -594,7 +618,19 @@ MonoBehaviour:
   _currentHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6902794921960763045}
+        m_TargetAssemblyTypeName: SpriteFlasher, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
       m_Calls:

@@ -109,10 +109,6 @@ namespace Player
 
         public override void OnTakeDamage()
         {
-            if (_stateManager.CurrentStateID != PlayerStateID.Dying && _stateManager.CurrentStateID != PlayerStateID.TakeDamage)
-            {
-                SwitchState(PlayerStateID.TakeDamage);
-            }
         }
 
         public void OnAnimationEvent(string eventName)
