@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6673672435492165187}
   - component: {fileID: 7308353156411861100}
+  - component: {fileID: 3139917513107804322}
   m_Layer: 0
   m_Name: StaticInteraactable
   m_TagString: Untagged
@@ -148,6 +149,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3123803, y: 0.13202143}
   m_EdgeRadius: 0
+--- !u!114 &3139917513107804322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449340361089775302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifier
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5806034153095678884
 GameObject:
   m_ObjectHideFlags: 0
