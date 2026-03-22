@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace NPC
 {
-    public enum NPCStateID { Idle, Move, Chase, Attack, TakeDamage, Dying }
-    public enum NPCTriggerZoneType { Vision, Attack }
+    public enum NPCStateID { Idle, Move, Chase, Attack, TakeDamage, Dying, RangedAttack }
+    public enum NPCTriggerZoneType { Vision, Attack, RangedAttack }
 
     public abstract class NPCState : ScriptableObject, IAnimationEventHandler
     {

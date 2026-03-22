@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.33
       objectReference: {fileID: 0}
+    - target: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -435,6 +439,7 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: 54a789451ae132143ae4f535133fe30b, type: 2}
   _visionZone: {fileID: 4404837130990217661}
   _attackZone: {fileID: 9217090549569706394}
+  _rangedAttackZone: {fileID: 0}
   _currentState: {fileID: 0}
   _agent: {fileID: 0}
   _animator: {fileID: 0}

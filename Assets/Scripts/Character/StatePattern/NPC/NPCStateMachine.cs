@@ -37,6 +37,7 @@ namespace NPC
         public List<StateMapping> availableStates;
         public NPCTriggerProxy _visionZone;
         public NPCTriggerProxy _attackZone;
+        public NPCTriggerProxy _rangedAttackZone;
 
         private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
         public NPCState _currentState;
@@ -130,11 +131,18 @@ namespace NPC
 
         public void AllStateCheck()
         {
-            if (_attackZone.IsPlayerIn())
+            if (_rangedAttackZone != null &&
+                _rangedAttackZone.IsPlayerIn())
+            {
+                SwitchState(NPCStateID.RangedAttack);
+            }
+            else if (_attackZone != null &&
+                     _attackZone.IsPlayerIn())
             {
                 SwitchState(NPCStateID.Attack);
             }
-            else if (_visionZone.IsPlayerIn())
+            else if (_visionZone != null &&
+                     _visionZone.IsPlayerIn())
             {
                 SwitchState(NPCStateID.Chase);
             }

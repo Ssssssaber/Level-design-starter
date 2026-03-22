@@ -20,6 +20,7 @@ namespace NPC
         public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
         {
             if (zone == NPCTriggerZoneType.Attack) _machine.SwitchState(NPCStateID.Attack);
+            if (zone == NPCTriggerZoneType.RangedAttack) _machine.SwitchState(NPCStateID.RangedAttack);
         }
 
         public override void OnZoneExit(NPCTriggerZoneType zone, Collider2D other)
