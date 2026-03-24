@@ -82,6 +82,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerProxy
   ZoneType: 0
+  _dependentOnVision: 1
+  _visionBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 65544
 --- !u!1 &4516538213720777631
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerProxy
   ZoneType: 1
+  _dependentOnVision: 1
+  _visionBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 65544
 --- !u!1 &5175595668355948505
 GameObject:
   m_ObjectHideFlags: 0

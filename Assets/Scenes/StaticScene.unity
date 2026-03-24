@@ -6857,7 +6857,7 @@ GameObject:
   - component: {fileID: 354349786}
   - component: {fileID: 354349788}
   - component: {fileID: 354349787}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: DungeonWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7942,7 +7942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473593350}
   m_Layer: 0
-  m_Name: PuzzleTarget
+  m_Name: PuzzleTargets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7979,7 +7979,7 @@ GameObject:
   - component: {fileID: 513794885}
   - component: {fileID: 513794887}
   - component: {fileID: 513794886}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DungeonPits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10123,7 +10123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &629168570
 Transform:
   m_ObjectHideFlags: 0
