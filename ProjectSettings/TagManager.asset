@@ -38,11 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: WorldSpaceCanvas
-    uniqueID: 3321253243
+  - name: Background
+    uniqueID: 890141433
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WorldSpaceCanvas
+    uniqueID: 3321253243
     locked: 0
   m_RenderingLayers:
   - Default

@@ -1029,8 +1029,8 @@ TextureImporter:
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.03632164}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1051,8 +1051,8 @@ TextureImporter:
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48282814, y: 0.0019750595}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1227,8 +1227,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 16
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48480272, y: -0.015198231}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1645,8 +1645,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5171733, y: 0.0019743443}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1667,8 +1667,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.015198708}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1993,7 +1993,7 @@ TextureImporter:
       name: Dungeon_Tileset_82
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 16
         width: 16
         height: 16
@@ -2195,8 +2195,8 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: -0.015197933, y: 0.5171725}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2235,7 +2235,7 @@ TextureImporter:
       name: Dungeon_Tileset_93
       rect:
         serializedVersion: 2
-        x: 48
+        x: 47
         y: 0
         width: 16
         height: 16
@@ -2257,7 +2257,7 @@ TextureImporter:
       name: Dungeon_Tileset_94
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 0
         width: 16
         height: 16
@@ -2349,8 +2349,8 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.56869507, y: 0.22522594}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

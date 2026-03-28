@@ -123,10 +123,23 @@ namespace NPC
 
         public override void OnTakeDamage()
         {
-            if (_stateManager.CurrentStateID != NPCStateID.Dying && _stateManager.CurrentStateID != NPCStateID.TakeDamage)
+            if (HasState(NPCStateID.TakeDamage) &&
+                _stateManager.CurrentStateID != NPCStateID.Dying &&
+                _stateManager.CurrentStateID != NPCStateID.TakeDamage)
             {
                 SwitchState(NPCStateID.TakeDamage);
             }
+        }
+
+        private bool HasState(NPCStateID targetStateID)
+        {
+            foreach (var state in availableStates)
+            {
+                if (state.id == targetStateID)
+                    return true; 
+            }
+
+            return false;
         }
 
         public void AllStateCheck()
