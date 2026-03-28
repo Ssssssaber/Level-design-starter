@@ -8,15 +8,61 @@ namespace PuzzleSystem
         [System.Serializable]
         public class PuzzlePart
         {
-            public MonoBehaviour puzzleObject;
+            public GameObject puzzleObject;
             public PuzzleState requiredState;
+
+            public IPuzzleElement GetPuzzleElement()
+            {
+                if (puzzleObject == null) return null;
+
+                IPuzzleElement[] found = puzzleObject.GetComponents<IPuzzleElement>();
+                if (found.Length > 1)
+                {
+                    Debug.LogError($"PuzzleManager: PuzzlePart '{puzzleObject.name}' has multiple IPuzzleElement components! Only one is allowed.", puzzleObject);
+                    return null;
+                }
+                if (found.Length == 1) return found[0];
+
+                found = puzzleObject.GetComponentsInChildren<IPuzzleElement>();
+                if (found.Length > 1)
+                {
+                    Debug.LogError($"PuzzleManager: PuzzlePart '{puzzleObject.name}' has multiple IPuzzleElement components in children! Only one is allowed.", puzzleObject);
+                    return null;
+                }
+                if (found.Length == 1) return found[0];
+
+                return null;
+            }
         }
 
         [System.Serializable]
         public class PuzzleTarget
         {
-            public MonoBehaviour targetObject;
+            public GameObject targetObject;
             public PuzzleState targetState;
+
+            public IPuzzleElement GetPuzzleElement()
+            {
+                if (targetObject == null) return null;
+
+                IPuzzleElement[] found = targetObject.GetComponents<IPuzzleElement>();
+                if (found.Length > 1)
+                {
+                    Debug.LogError($"PuzzleManager: PuzzleTarget '{targetObject.name}' has multiple IPuzzleElement components! Only one is allowed.", targetObject);
+                    return null;
+                }
+                if (found.Length == 1) return found[0];
+
+                found = targetObject.GetComponentsInChildren<IPuzzleElement>();
+                if (found.Length > 1)
+                {
+                    Debug.LogError($"PuzzleManager: PuzzleTarget '{targetObject.name}' has multiple IPuzzleElement components in children! Only one is allowed.", targetObject);
+                    return null;
+                }
+                if (found.Length == 1) return found[0];
+
+                return null;
+            }
         }
 
         [Header("Puzzle Parts")]
@@ -42,6 +88,52 @@ namespace PuzzleSystem
         private void OnDisable()
         {
             PuzzleEvents.OnElementStateChanged -= OnElementChanged;
+        }
+
+        private void OnValidate()
+        {
+            ValidatePuzzleParts();
+            ValidatePuzzleTargets();
+        }
+
+        private void ValidatePuzzleParts()
+        {
+            foreach (var part in puzzleParts)
+            {
+                if (part.puzzleObject == null) continue;
+
+                int selfCount = part.puzzleObject.GetComponents<IPuzzleElement>().Length;
+                int childrenCount = part.puzzleObject.GetComponentsInChildren<IPuzzleElement>().Length;
+
+                if (selfCount + childrenCount == 0)
+                {
+                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzlePart '{part.puzzleObject.name}' has no IPuzzleElement component!", part.puzzleObject);
+                }
+                else if (selfCount + childrenCount > 1)
+                {
+                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzlePart '{part.puzzleObject.name}' has multiple ({selfCount + childrenCount}) IPuzzleElement components! Only one is allowed.", part.puzzleObject);
+                }
+            }
+        }
+
+        private void ValidatePuzzleTargets()
+        {
+            foreach (var target in puzzleTargets)
+            {
+                if (target.targetObject == null) continue;
+
+                int selfCount = target.targetObject.GetComponents<IPuzzleElement>().Length;
+                int childrenCount = target.targetObject.GetComponentsInChildren<IPuzzleElement>().Length;
+
+                if (selfCount + childrenCount == 0)
+                {
+                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzleTarget '{target.targetObject.name}' has no IPuzzleElement component!", target.targetObject);
+                }
+                else if (selfCount + childrenCount > 1)
+                {
+                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzleTarget '{target.targetObject.name}' has multiple ({selfCount + childrenCount}) IPuzzleElement components! Only one is allowed.", target.targetObject);
+                }
+            }
         }
 
         private void OnElementChanged(IPuzzleElement element)
@@ -75,7 +167,8 @@ namespace PuzzleSystem
         {
             foreach (var part in puzzleParts)
             {
-                if (part.puzzleObject is IPuzzleElement e && e == element)
+                var e = part.GetPuzzleElement();
+                if (e != null && e == element)
                     return true;
             }
             return false;
@@ -85,7 +178,8 @@ namespace PuzzleSystem
         {
             foreach (var part in puzzleParts)
             {
-                if (part.puzzleObject is IPuzzleElement element)
+                var element = part.GetPuzzleElement();
+                if (element != null)
                 {
                     if (element.CurrentState != part.requiredState)
                     {
@@ -94,7 +188,7 @@ namespace PuzzleSystem
                 }
                 else
                 {
-                    Debug.LogWarning($"Puzzle part {part.puzzleObject?.name} does not implement IPuzzleElement", part.puzzleObject);
+                    Debug.LogWarning($"Puzzle part {part.puzzleObject?.name} does not have IPuzzleElement", part.puzzleObject);
                     return false;
                 }
             }
@@ -105,13 +199,14 @@ namespace PuzzleSystem
         {
             foreach (var target in puzzleTargets)
             {
-                if (target.targetObject is IPuzzleElement element)
+                var element = target.GetPuzzleElement();
+                if (element != null)
                 {
                     element.SetState(target.targetState);
                 }
                 else
                 {
-                    Debug.LogWarning($"Puzzle target {target.targetObject?.name} does not implement IPuzzleElement", target.targetObject);
+                    Debug.LogWarning($"Puzzle target {target.targetObject?.name} does not have IPuzzleElement", target.targetObject);
                 }
             }
         }

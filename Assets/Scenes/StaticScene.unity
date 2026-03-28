@@ -6789,17 +6789,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca688dc7039267940a27352632e411cb, type: 3}
---- !u!114 &270679356 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7003206103292667548, guid: c710d8289344bda4295d5e333964c9ea, type: 3}
-  m_PrefabInstance: {fileID: 1517166765}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e2bc9d3e2d42241a55a16bd53b0d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable.FloorTorch
 --- !u!1 &303799197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,16 +7804,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleSystem.PuzzleManager
   puzzleParts:
-  - puzzleObject: {fileID: 1320706628}
+  - puzzleObject: {fileID: 529375267}
     requiredState: 1
-  - puzzleObject: {fileID: 973554785}
+  - puzzleObject: {fileID: 1737134055}
     requiredState: 1
-  - puzzleObject: {fileID: 1785565515}
+  - puzzleObject: {fileID: 1086065522}
     requiredState: 1
-  - puzzleObject: {fileID: 270679356}
+  - puzzleObject: {fileID: 633257013}
     requiredState: 0
   puzzleTargets:
-  - targetObject: {fileID: 434723391}
+  - targetObject: {fileID: 2090713215}
     targetState: 0
   checkOnPartChanged: 1
   continuousCheck: 0
@@ -7916,17 +7905,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 371155497029279936, guid: 1c607e910a0516241a37075caa027f38, type: 3}
   m_PrefabInstance: {fileID: 434723389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &434723391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3838420128251398091, guid: 1c607e910a0516241a37075caa027f38, type: 3}
-  m_PrefabInstance: {fileID: 434723389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48523743e0038384b817fab6045dce45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable.PuzzleDoor
 --- !u!4 &469466928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6673672435492165187, guid: 91d24861c48acc14fbea42775a0255f4, type: 3}
@@ -10051,6 +10029,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &529375267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940038651194537178, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
+  m_PrefabInstance: {fileID: 1969768872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &535742282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10149,6 +10132,11 @@ Transform:
   - {fileID: 2005816320}
   m_Father: {fileID: 303799198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &633257013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 953778883999054210, guid: c710d8289344bda4295d5e333964c9ea, type: 3}
+  m_PrefabInstance: {fileID: 1517166765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &717903887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10382,17 +10370,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1372710661650486367, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
   m_PrefabInstance: {fileID: 968474326}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &973554785 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 883579011634899908, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
-  m_PrefabInstance: {fileID: 968474326}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e2bc9d3e2d42241a55a16bd53b0d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable.FloorTorch
 --- !u!1001 &1003532887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10553,17 +10530,11 @@ Transform:
   - {fileID: 1517166766}
   m_Father: {fileID: 377082745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1320706628 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 883579011634899908, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
-  m_PrefabInstance: {fileID: 1969768872}
+--- !u!1 &1086065522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 953778883999054210, guid: c710d8289344bda4295d5e333964c9ea, type: 3}
+  m_PrefabInstance: {fileID: 1580079353}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e2bc9d3e2d42241a55a16bd53b0d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable.FloorTorch
 --- !u!4 &1380541160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6673672435492165187, guid: 7bc7ddf9010c9ca419549d9253d29eb6, type: 3}
@@ -10787,17 +10758,11 @@ Transform:
   - {fileID: 377082745}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1785565515 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7003206103292667548, guid: c710d8289344bda4295d5e333964c9ea, type: 3}
-  m_PrefabInstance: {fileID: 1580079353}
+--- !u!1 &1737134055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940038651194537178, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
+  m_PrefabInstance: {fileID: 968474326}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e2bc9d3e2d42241a55a16bd53b0d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable.FloorTorch
 --- !u!4 &1832863526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8087387561940089310, guid: edd19c3e77cf98447ac6d0037c712b7f, type: 3}
@@ -11116,6 +11081,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
   m_PrefabInstance: {fileID: 535742282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2090713215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8531430151666450501, guid: 1c607e910a0516241a37075caa027f38, type: 3}
+  m_PrefabInstance: {fileID: 434723389}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2135138149 stripped
 Transform:
