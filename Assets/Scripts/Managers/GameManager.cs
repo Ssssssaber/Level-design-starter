@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using Cinemachine;
 using Player;
+using Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public SoundPlayer SoundPlayer { get; private set; }
 
     public Action GameStarted;
     public Action GameFinished;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerStateMachine _playerPrefab;
     [SerializeField] private CinemachineVirtualCamera _cameraPrefab;
     [SerializeField] private Transform _spawnTransform;
+    [SerializeField] private SoundPlayer _soundPlayer;
 
     [Header("DEBUG (Set in play mode)")]
     public PlayerStateMachine Player;
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        SoundPlayer = _soundPlayer;
         DontDestroyOnLoad(gameObject);
     }
 

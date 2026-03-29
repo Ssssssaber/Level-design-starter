@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
+using Sound;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,19 +34,25 @@ namespace NPC
             
         }
 
+        [Header("State pattern")]
         public NPCStateID InitStateID;
         public List<StateMapping> availableStates;
+        public NPCState _currentState;
+
+        [Header("Detection zones")]
         public NPCTriggerProxy _visionZone;
         public NPCTriggerProxy _attackZone;
         public NPCTriggerProxy _rangedAttackZone;
 
-        private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
-        public NPCState _currentState;
-        public StateManager _stateManager = new StateManager(NPCStateID.Idle);
-        public NavMeshAgent _agent;
-        public Animator _animator;
+        [Header("Other references")]
         public SpriteRenderer _sprite;
-        public Vector2 _initialPosiiton;
+
+        private Dictionary<NPCStateID, NPCState> _stateCache = new Dictionary<NPCStateID, NPCState>();
+        [HideInInspector] public StateManager _stateManager = new StateManager(NPCStateID.Idle);
+        [HideInInspector] public NavMeshAgent _agent;
+        [HideInInspector] public SoundProfileContainer _soundManager;
+        [HideInInspector] public Animator _animator;
+        [HideInInspector] public Vector2 _initialPosiiton;
 
         // Calls when awake in base class
         protected override void Initialize()
@@ -54,6 +61,7 @@ namespace NPC
             _animator = GetComponent<Animator>();
             _sprite = GetComponent<SpriteRenderer>();
             _agent = GetComponent<NavMeshAgent>();
+            _soundManager = GetComponent<SoundProfileContainer>();
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;

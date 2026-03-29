@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1316230877414461388, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 62a5158d58bef4448a369d558928f256, type: 2}
     - target: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -377,6 +381,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9021978811065445501}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 113473750659783061}
     - targetCorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1772147525795435477}
@@ -445,13 +452,14 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: c069367a90dc02c499c8cbdbea8e9b63, type: 2}
   - id: 5
     stateAsset: {fileID: 11400000, guid: 54a789451ae132143ae4f535133fe30b, type: 2}
+  _currentState: {fileID: 0}
   _visionZone: {fileID: 4404837130990217661}
   _attackZone: {fileID: 9217090549569706394}
   _rangedAttackZone: {fileID: 0}
-  _currentState: {fileID: 0}
-  _agent: {fileID: 0}
-  _animator: {fileID: 0}
   _sprite: {fileID: 7719035418686210}
+  _agent: {fileID: 0}
+  _soundManager: {fileID: 0}
+  _animator: {fileID: 0}
   _initialPosiiton: {x: 0, y: 0}
 --- !u!95 &5188136792311771159
 Animator:
@@ -570,3 +578,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health.AttackHitbox
   _damage: 1
   _hitboxCollider: {fileID: 7357505744860817388}
+--- !u!114 &113473750659783061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551794574967235073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8888574f6d25d4ca76c5bb42869600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sound.SoundProfileContainer
+  _soundProfile: {fileID: 11400000, guid: 62a5158d58bef4448a369d558928f256, type: 2}
