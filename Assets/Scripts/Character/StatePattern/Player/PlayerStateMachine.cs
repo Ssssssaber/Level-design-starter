@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Movement;
 using Interactable;
+using UnityEngine.Assertions.Must;
 
 namespace Player
 {
@@ -63,6 +64,7 @@ namespace Player
             _actions.Player.Move.canceled += OnMove;
             _actions.Player.Attack.performed += _ => SwitchState(PlayerStateID.Attack);
             _actions.Player.Use.performed += _interact.OnInteract;
+            _actions.Player.GameMenu.performed += _ => GameManager.Instance.GameMenuRequested?.Invoke();
 
             foreach (var mapping in availableStates)
             {

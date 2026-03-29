@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Health;
+using Unity.VisualScripting;
 
 public class HeartUIManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class HeartUIManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.GameStarted += Init; 
+        GameManager.Instance.GameFinished += ResetHearts; 
     }
 
     private void Init()
@@ -27,6 +29,11 @@ public class HeartUIManager : MonoBehaviour
         _playerHealth = GameManager.Instance.Player.GetComponent<HealthComponent>();
         _playerHealth.OnHealthChanged.AddListener(UpdateHearts);
         UpdateHearts(_playerHealth.CurrentHealth);
+    }
+
+    private void ResetHearts()
+    {
+        UpdateHearts(0);
     }
 
     private void UpdateHearts(int currentHearts)

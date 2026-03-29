@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     public SoundPlayer FXSoundPlayer { get; private set; }
     public MusicPlayer MusicSoundPlayer { get; private set; }
 
+    public bool IsGameStarted { get; private set; } 
+
     public Action GameStarted;
+    public Action GameMenuRequested;
     public Action GameFinished;
     public Action MenuLoaded;
 
@@ -133,6 +136,8 @@ public class GameManager : MonoBehaviour
                 _levelScenes.Add(scene);
             }
         }
+
+        IsGameStarted = true;
     }
 
     public void ReturnToMenu()
@@ -182,6 +187,7 @@ public class GameManager : MonoBehaviour
         }
 
         GameFinished?.Invoke();
+        IsGameStarted = true;
     }
 
     public void QuitApplication()
