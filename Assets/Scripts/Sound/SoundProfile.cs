@@ -11,7 +11,7 @@ namespace Sound
     {
         public SoundID Sound;
         public AudioClip Clip;
-        [Range(0f, 1f)] public float Volume;
+        [Range(0f, 1f)] public float Volume = 1.0f;
     }
 
     [CreateAssetMenu(fileName = "SoundProfile", menuName = "GameAudio/Sound Profile")]

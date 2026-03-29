@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 113473750659783061, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ac246e7b94d8d243bcbf5a8480076cc, type: 2}
     - target: {fileID: 2820367772146654897, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.89
@@ -46,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4951039185679513970, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Radius
-      value: 0.6026119
+      value: 0.88163906
       objectReference: {fileID: 0}
     - target: {fileID: 4951039185679513970, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Offset.x
-      value: 0.32082745
+      value: 0.041800663
       objectReference: {fileID: 0}
     - target: {fileID: 4951039185679513970, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Offset.y
@@ -58,19 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417160672514014276, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Size.x
-      value: 1.5689229
+      value: 1.7344439
       objectReference: {fileID: 0}
     - target: {fileID: 6417160672514014276, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Size.y
-      value: 1.1947408
+      value: 1.3326747
       objectReference: {fileID: 0}
     - target: {fileID: 6417160672514014276, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Offset.x
-      value: 0.41612965
+      value: 0.33336914
       objectReference: {fileID: 0}
     - target: {fileID: 6417160672514014276, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Offset.y
-      value: 0.24232745
+      value: 0.17336045
       objectReference: {fileID: 0}
     - target: {fileID: 7096434708639334230, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: availableStates.Array.size
@@ -100,6 +104,10 @@ PrefabInstance:
       propertyPath: _enabledFromStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7706815301489868655, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ac246e7b94d8d243bcbf5a8480076cc, type: 2}
     - target: {fileID: 7980334235143561558, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 3

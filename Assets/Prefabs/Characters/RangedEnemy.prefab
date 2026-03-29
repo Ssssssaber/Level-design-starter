@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1504920921590492608, guid: f282445b5c9972544b842996a37cde0c, type: 3}
+    - target: {fileID: 113473750659783061, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e4b12f4e3f351d4bade0c29561cd605, type: 2}
     - target: {fileID: 408356516659825945, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -87,6 +91,10 @@ PrefabInstance:
       propertyPath: availableStates.Array.data[6].stateAsset
       value: 
       objectReference: {fileID: 11400000, guid: 0e4dff7b807a04147bc919c5c5090ece, type: 2}
+    - target: {fileID: 7706815301489868655, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e4b12f4e3f351d4bade0c29561cd605, type: 2}
     - target: {fileID: 7980334235143561558, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
