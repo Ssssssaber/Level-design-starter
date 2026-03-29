@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
-using Sound;
+using GameObjectsSound;
 using UnityEngine;
 using UnityEngine.AI;
 

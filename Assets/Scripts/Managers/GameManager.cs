@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using Cinemachine;
 using Player;
-using Sound;
+using GameObjectsSound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public SoundPlayer SoundPlayer { get; private set; }
+    public SoundPlayer FXSoundPlayer { get; private set; }
+    public MusicPlayer MusicSoundPlayer { get; private set; }
 
     public Action GameStarted;
     public Action GameFinished;
@@ -24,9 +25,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerStateMachine _playerPrefab;
     [SerializeField] private CinemachineVirtualCamera _cameraPrefab;
     [SerializeField] private Transform _spawnTransform;
-    [SerializeField] private SoundPlayer _soundPlayer;
 
-    [Header("DEBUG (Set in play mode)")]
+    [Header("Sound References (Set before play mode)")]
+    [SerializeField] private SoundPlayer _soundPlayer;
+    [SerializeField] private MusicPlayer _musicSoundPlayer;
+
+    [Header("DEBUG")]
     public PlayerStateMachine Player;
     public CinemachineVirtualCamera Camera;
 
@@ -44,7 +48,8 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        SoundPlayer = _soundPlayer;
+        FXSoundPlayer = _soundPlayer;
+        MusicSoundPlayer = _musicSoundPlayer;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -99,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator StartGameRoutine()
     {
+        MusicSoundPlayer.PlayDefaultGlobalSound();
         InitPlayer(Instantiate(_playerPrefab, _spawnTransform.position, Quaternion.identity));
         Camera = Instantiate(_cameraPrefab, _spawnTransform.position, Quaternion.identity);
         Camera.m_Follow = Player.transform;

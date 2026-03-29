@@ -1,6 +1,6 @@
 using System;
 using RangedAttack;
-using Sound;
+using GameObjectsSound;
 using UnityEngine;
 
 namespace NPC
@@ -56,7 +56,7 @@ namespace NPC
                 case "LaunchProjectile":
                     {
                         FacePlayer();
-                        GameManager.Instance.SoundPlayer.PlaySound(SoundID.Attack, _machine._soundManager.GetProfile(), _machine.transform);
+                        GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Attack, _machine._soundManager.GetProfile(), _machine.transform);
                         _rangedAttack.LaunchProjectlie(GameManager.Instance.Player.transform.position);
                         break;
                     }

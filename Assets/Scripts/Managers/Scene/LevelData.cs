@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VectorGraphics;
 
-[CreateAssetMenu(fileName = "NewLevelData", menuName = "Game/Level Data")]
+[CreateAssetMenu(fileName = "NewLevelData", menuName = "Levels/Level Data")]
 public class LevelData : ScriptableObject
 {
     public string levelDisplayName;

@@ -3,12 +3,14 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] Button _startGameButton;
-    [SerializeField] Button _optionsButton;
-    [SerializeField] Button _exitGameButton;
+    [SerializeField] private Button _startGameButton;
+    [SerializeField] private Button _optionsButton;
+    [SerializeField] private Button _exitGameButton;
+    [SerializeField] private GlobalSoundEntry _mainMenuMusic;
 
     private void Start()
     {
+        GameManager.Instance.MusicSoundPlayer.PlaySound(_mainMenuMusic, transform);
         _startGameButton.onClick.AddListener(UIStartGame);
         _optionsButton.onClick.AddListener(UIOptions);
         _exitGameButton.onClick.AddListener(UIExitGame);

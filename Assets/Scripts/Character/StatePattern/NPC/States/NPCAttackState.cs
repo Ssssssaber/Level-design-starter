@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using Sound;
+using GameObjectsSound;
 
 namespace NPC
 {
@@ -41,7 +41,7 @@ namespace NPC
             {
                 case "AttackStarted":
                     {
-                        GameManager.Instance.SoundPlayer.PlaySound(SoundID.Attack, _machine._soundManager.GetProfile(), _machine.transform);
+                        GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Attack, _machine._soundManager.GetProfile(), _machine.transform);
                         FacePlayer();
                         break;
                     }
