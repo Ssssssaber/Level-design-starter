@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9021978811065445501, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: _damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9180484118036996305, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.31

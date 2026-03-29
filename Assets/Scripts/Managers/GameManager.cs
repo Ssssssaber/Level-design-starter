@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Cinemachine;
 using Player;
 using UnityEngine;
@@ -47,6 +48,12 @@ public class GameManager : MonoBehaviour
         LoadMenu();
     }
 
+    private static string GetSceneName(string scenePath)
+    {
+        if (string.IsNullOrEmpty(scenePath)) return string.Empty;
+        return Path.GetFileNameWithoutExtension(scenePath);
+    }
+
     private void LoadMenu()
     {
         StartCoroutine(LoadMenuRoutine());
@@ -54,10 +61,16 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator LoadMenuRoutine()
     {
-        if (!string.IsNullOrEmpty(_menuScene))
+        string menuName = GetSceneName(_menuScene);
+        if (!string.IsNullOrEmpty(_menuScene) && !SceneManager.GetSceneByName(menuName).isLoaded)
         {
             AsyncOperation loadOp = SceneManager.LoadSceneAsync(_menuScene, LoadSceneMode.Additive);
             yield return new WaitUntil(() => loadOp.isDone);
+            _isMenuLoaded = true;
+            MenuLoaded?.Invoke();
+        }
+        else
+        {
             _isMenuLoaded = true;
             MenuLoaded?.Invoke();
         }
@@ -87,7 +100,8 @@ public class GameManager : MonoBehaviour
         _spawnTransform.gameObject.SetActive(false);
         GameStarted?.Invoke();
 
-        if (_isMenuLoaded && !string.IsNullOrEmpty(_menuScene))
+        string menuName = GetSceneName(_menuScene);
+        if (_isMenuLoaded && !string.IsNullOrEmpty(_menuScene) && SceneManager.GetSceneByName(menuName).isLoaded)
         {
             AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(_menuScene);
             yield return new WaitUntil(() => unloadOp.isDone);
@@ -96,10 +110,15 @@ public class GameManager : MonoBehaviour
 
         foreach (var scene in _currentLevel.LevelScenes)
         {
-            if (!string.IsNullOrEmpty(scene))
+            string sceneName = GetSceneName(scene);
+            if (!string.IsNullOrEmpty(scene) && !SceneManager.GetSceneByName(sceneName).isLoaded)
             {
                 AsyncOperation loadOp = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
                 yield return new WaitUntil(() => loadOp.isDone);
+                _levelScenes.Add(scene);
+            }
+            else if (!string.IsNullOrEmpty(scene))
+            {
                 _levelScenes.Add(scene);
             }
         }
@@ -112,11 +131,12 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator ReturnToMenuRoutine()
     {
-        foreach (var sceneName in _levelScenes)
+        foreach (var scenePath in _levelScenes)
         {
+            string sceneName = GetSceneName(scenePath);
             if (SceneManager.GetSceneByName(sceneName).isLoaded)
             {
-                yield return SceneManager.UnloadSceneAsync(sceneName);
+                yield return SceneManager.UnloadSceneAsync(scenePath);
             }
         }
         _levelScenes.Clear();
@@ -138,10 +158,15 @@ public class GameManager : MonoBehaviour
             _spawnTransform.gameObject.SetActive(true);
         }
 
-        if (!string.IsNullOrEmpty(_menuScene))
+        string menuName = GetSceneName(_menuScene);
+        if (!string.IsNullOrEmpty(_menuScene) && !SceneManager.GetSceneByName(menuName).isLoaded)
         {
             AsyncOperation loadOp = SceneManager.LoadSceneAsync(_menuScene, LoadSceneMode.Additive);
             yield return new WaitUntil(() => loadOp.isDone);
+            _isMenuLoaded = true;
+        }
+        else
+        {
             _isMenuLoaded = true;
         }
 
@@ -150,6 +175,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitApplication()
     {
+        GameFinished?.Invoke();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

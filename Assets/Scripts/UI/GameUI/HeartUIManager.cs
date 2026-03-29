@@ -19,6 +19,11 @@ public class HeartUIManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.GameStarted += Init; 
+    }
+
+    private void Init()
+    {
         _playerHealth = GameManager.Instance.Player.GetComponent<HealthComponent>();
         _playerHealth.OnHealthChanged.AddListener(UpdateHearts);
         UpdateHearts(_playerHealth.CurrentHealth);
