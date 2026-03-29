@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool IsGameStarted { get; private set; } 
 
     public Action GameStarted;
+    public Action GameWon;
+    public Action GameLost;
     public Action GameMenuRequested;
     public Action GameFinished;
     public Action MenuLoaded;

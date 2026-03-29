@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using Movement;
 using Interactable;
 using UnityEngine.Assertions.Must;
+using Health;
 
 namespace Player
 {
@@ -45,6 +46,7 @@ namespace Player
         [HideInInspector] public MovementSystem _movementSystem;
         [SerializeField] private InteractionDetector _interact;
         private PlayerInput _playerInput;
+        private HealthComponent _healthComponent;
         private InputSystem_Actions _actions;
         private SpriteRenderer _sprite;
 
@@ -55,6 +57,8 @@ namespace Player
             _playerInput = GetComponent<PlayerInput>();
             _sprite = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
+            _healthComponent = GetComponent<HealthComponent>();
+            _healthComponent.OnDeath.AddListener(LooseGame);
 
             _actions = new InputSystem_Actions();
 
@@ -72,6 +76,11 @@ namespace Player
                 instance.Init(this);
                 _stateCache[mapping.id] = instance;
             }
+        }
+
+        private void LooseGame()
+        {
+            GameManager.Instance.GameLost.Invoke();
         }
 
         private void Start()

@@ -15,7 +15,6 @@ public class GlobalSoundTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.LogError("player entered");
         switch (_soundType)
         {
             case SoundType.Music:
@@ -30,7 +29,6 @@ public class GlobalSoundTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.LogError("exited");
         switch (_soundType)
         {
             case SoundType.Music:
