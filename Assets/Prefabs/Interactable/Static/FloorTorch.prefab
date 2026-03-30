@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1756039058, guid: 1653455c3ae8fac4397abd4d58ce4f65, type: 3}
+    - target: {fileID: 2148274933294045292, guid: b70abd0df94ae0f40831559147d4f5ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148274933294045292, guid: b70abd0df94ae0f40831559147d4f5ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.28
+      objectReference: {fileID: 0}
     - target: {fileID: 3449340361089775302, guid: b70abd0df94ae0f40831559147d4f5ae, type: 3}
       propertyPath: m_Name
       value: FloorTorch

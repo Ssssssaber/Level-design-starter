@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1180648634, guid: 1653455c3ae8fac4397abd4d58ce4f65, type: 3}
+    - target: {fileID: 5927097754283940464, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.292
+      objectReference: {fileID: 0}
     - target: {fileID: 6940038651194537178, guid: 0a67a4fa89fe32442b0f21dd6ccfe22c, type: 3}
       propertyPath: m_Name
       value: SmallFloorTorch

@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Size.y
-      value: 0.18911362
+      value: 0.41218883
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Offset.x
@@ -345,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_Offset.y
-      value: -0.40138292
+      value: -0.28984532
       objectReference: {fileID: 0}
     - target: {fileID: 6579959866172428271, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 7388399842426930641, guid: 5763ca07be14f264e97da5d87eeef1d2, type: 3}
     - target: {fileID: 8810706494194376019, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.94
+      value: -0.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
