@@ -69,6 +69,7 @@ namespace Player
             _actions.Player.Attack.performed += _ => SwitchState(PlayerStateID.Attack);
             _actions.Player.Use.performed += _interact.OnInteract;
             _actions.Player.GameMenu.performed += _ => GameManager.Instance.GameMenuRequested?.Invoke();
+            _actions.Player.SwapActiveItems.performed += _ => _interact.SwapActiveItem();
 
             foreach (var mapping in availableStates)
             {
