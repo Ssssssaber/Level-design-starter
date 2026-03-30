@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health.Trap
   _isWorking: 1
+  _disabledStateName: Idle
+  _damageCollider: {fileID: 8814053075816334169}
 --- !u!1 &400453602103260837
 GameObject:
   m_ObjectHideFlags: 0

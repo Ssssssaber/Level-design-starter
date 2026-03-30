@@ -17,14 +17,7 @@ namespace Health
             private set
             {
                 _isWorking = value;
-                if (_isWorking)
-                {
-                    _animator.StopPlayback();
-                }
-                else
-                {
-                    _animator.StartPlayback();
-                }
+                
             }
         }
 
@@ -53,6 +46,18 @@ namespace Health
                 default:
                     Debug.LogWarning($"State {state} not implemented for {gameObject.name}");
                     break;
+            }
+        }
+
+        public void OnAnimationStart()
+        {
+            if (_isWorking)
+            {
+                _animator.StopPlayback();
+            }
+            else
+            {
+                _animator.StartPlayback();
             }
         }
     }
