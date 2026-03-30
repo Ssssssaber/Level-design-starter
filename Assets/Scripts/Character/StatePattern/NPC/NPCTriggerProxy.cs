@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace NPC
 {
@@ -14,7 +14,14 @@ namespace NPC
         [Tooltip("Layers that block vision (e.g. walls)")]
         [SerializeField] private LayerMask _visionBlockingLayers = Physics2D.DefaultRaycastLayers;
 
+        [Header("Continuous Check Settings")]
+        [Tooltip("How often to check for player visibility while in zone")]
+        [SerializeField] private float _checkInterval = 0.1f;
+
         private int _ownColliderLayer;
+        private bool _playerInTrigger;
+        private bool _playerWasVisible;
+        private Coroutine _visionCheckCoroutine;
 
         private NPCStateMachine _parentAI;
         private CircleCollider2D _collider;
@@ -28,6 +35,53 @@ namespace NPC
             if (_dependentOnVision && _visionBlockingLayers == 0)
             {
                 _visionBlockingLayers = LayerMask.GetMask("Default");
+            }
+        }
+
+        void OnEnable()
+        {
+            if (_dependentOnVision)
+            {
+                _visionCheckCoroutine = StartCoroutine(VisionCheckRoutine());
+            }
+        }
+
+        void OnDisable()
+        {
+            if (_visionCheckCoroutine != null)
+            {
+                StopCoroutine(_visionCheckCoroutine);
+                _visionCheckCoroutine = null;
+            }
+        }
+
+        private IEnumerator VisionCheckRoutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(_checkInterval);
+
+                if (_playerInTrigger)
+                {
+                    bool currentlyVisible = IsPlayerVisible();
+
+                    if (currentlyVisible && !_playerWasVisible)
+                    {
+                        Debug.Log($"{ZoneType} became visible - firing enter");
+                        _parentAI.NotifyZoneEnter(ZoneType, GameManager.Instance.Player.GetComponent<Collider2D>());
+                    }
+                    else if (!currentlyVisible && _playerWasVisible)
+                    {
+                        Debug.Log($"{ZoneType} became invisible - firing exit");
+                        _parentAI.NotifyZoneExit(ZoneType, GameManager.Instance.Player.GetComponent<Collider2D>());
+                    }
+
+                    _playerWasVisible = currentlyVisible;
+                }
+                else
+                {
+                    _playerWasVisible = false;
+                }
             }
         }
 
@@ -68,26 +122,39 @@ namespace NPC
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!ShouldNotify(other)) return;
+            if (!IsPlayer(other)) return;
             
-            Debug.Log($"{ZoneType} entered by {other.gameObject.name}");
-            _parentAI.NotifyZoneEnter(ZoneType, other);
+            _playerInTrigger = true;
+            _playerWasVisible = ShouldNotifyVision();
+
+            Debug.Log($"{ZoneType} entered by {other.gameObject.name}, visible: {_playerWasVisible}");
+            
+            if (!_dependentOnVision || _playerWasVisible)
+            {
+                _parentAI.NotifyZoneEnter(ZoneType, other);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!ShouldNotify(other)) return;
+            if (!IsPlayer(other)) return;
             
+            _playerInTrigger = false;
+            _playerWasVisible = false;
+
             Debug.Log($"{ZoneType} exited by {other.gameObject.name}");
             _parentAI.NotifyZoneExit(ZoneType, other);
         }
 
-        private bool ShouldNotify(Collider2D other)
+        private bool IsPlayer(Collider2D other)
         {
-            if (GameManager.Instance?.Player == null) return true;
-            if (other.gameObject != GameManager.Instance.Player.gameObject) return false;
-            if (_dependentOnVision) return IsPlayerVisible();
-            return true;
+            return GameManager.Instance?.Player != null && other.gameObject == GameManager.Instance.Player.gameObject;
+        }
+
+        private bool ShouldNotifyVision()
+        {
+            if (!_dependentOnVision) return true;
+            return IsPlayerVisible();
         }
     }
 }
