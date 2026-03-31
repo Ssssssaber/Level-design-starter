@@ -95,7 +95,6 @@ namespace NPC
 
         public void SwitchState(NPCStateID newID)
         {
-            //Debug.LogWarning($"Switch state: {newID} from {_currentState}");
             _currentState?.Exit();
             _currentState = _stateCache[newID];
             _currentState.Enter();
@@ -104,13 +103,11 @@ namespace NPC
 
         public void NotifyZoneEnter(NPCTriggerZoneType zone, Collider2D other)
         {
-            //Debug.LogWarning($"Zone {zone} ENTERED by {other.gameObject.name}");
             _currentState?.OnZoneEnter(zone, other);
         }
 
         public void NotifyZoneExit(NPCTriggerZoneType zone, Collider2D other)
         {
-            //Debug.LogWarning($"Zone {zone} EXITED by {other.gameObject.name}");
             _currentState?.OnZoneExit(zone, other);
         }
 
