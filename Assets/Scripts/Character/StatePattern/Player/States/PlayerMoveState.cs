@@ -7,7 +7,6 @@ namespace Player
     {
         public override void Enter()
         {
-            Debug.Log("Enter MoveState");
             _machine._animator.Play("Walk");
             _machine._movementSystem.CanMove = true; // Enable movement
         }
@@ -24,7 +23,6 @@ namespace Player
 
         public override void Exit()
         {
-            Debug.Log("Exit MoveState");
             _machine._movementSystem.CanMove = false; // Disable movement
             _machine._movementSystem.SetDirection(Vector2.zero);
             _machine._animator.Play("Idle");

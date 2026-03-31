@@ -7,7 +7,6 @@ namespace Player
     {
         public override void Enter()
         {
-            Debug.Log("Enter IdleState");
             _machine._animator.Play("Interact");
             _machine._movementSystem.CanMove = false; // Disable movement
         }
@@ -23,7 +22,6 @@ namespace Player
 
         public override void Exit()
         {
-            Debug.Log("Exit IdleState");
         }
     }
 }

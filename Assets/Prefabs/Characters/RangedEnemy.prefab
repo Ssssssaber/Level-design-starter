@@ -51,6 +51,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2585237776830136140, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.699999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585237776830136140, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0000005364418
+      objectReference: {fileID: 0}
     - target: {fileID: 4516538213720777631, guid: ec0f39c2e3c2b0f41baaf95e5cff2d7f, type: 3}
       propertyPath: m_Name
       value: RangedAttackZone
