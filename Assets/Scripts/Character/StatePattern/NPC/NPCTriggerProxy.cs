@@ -139,11 +139,17 @@ namespace NPC
         {
             if (!IsPlayer(other)) return;
             
+            bool wasVisible = _playerWasVisible;
             _playerInTrigger = false;
             _playerWasVisible = false;
 
-            Debug.Log($"{ZoneType} exited by {other.gameObject.name}");
-            _parentAI.NotifyZoneExit(ZoneType, other);
+            Debug.Log($"{ZoneType} exited by {other.gameObject.name}, wasVisible: {wasVisible}");
+            
+            // Only fire exit if player was actually visible when in zone
+            if (wasVisible)
+            {
+                _parentAI.NotifyZoneExit(ZoneType, other);
+            }
         }
 
         private bool IsPlayer(Collider2D other)

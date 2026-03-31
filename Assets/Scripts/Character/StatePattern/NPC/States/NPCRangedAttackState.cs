@@ -27,6 +27,11 @@ namespace NPC
 
         public override void UpdateState()
         {
+            // Check if player is still visible while attacking
+            if (_machine._visionZone != null && !_machine._visionZone.IsPlayerIn())
+            {
+                ExitAttackState();
+            }
         }
 
         public override void OnZoneEnter(NPCTriggerZoneType zone, Collider2D other)
