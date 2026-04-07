@@ -15,6 +15,7 @@ namespace Interactable
         [SerializeField] private bool _toggled = true;
 
         public PuzzleState CurrentState => _toggled ? PuzzleState.On : PuzzleState.Off;
+        public PuzzleState InitialState => _toggled ? PuzzleState.On : PuzzleState.Off;
 
         private void Awake()
         {

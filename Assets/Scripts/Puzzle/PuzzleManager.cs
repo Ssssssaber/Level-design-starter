@@ -77,8 +77,11 @@ namespace PuzzleSystem
         public bool checkOnPartChanged = true;
         [Tooltip("Check puzzle status in Update (for elements that change without events)")]
         public bool continuousCheck = false;
+        [Tooltip("Reset targets to initial state when puzzle becomes unsolved")]
+        public bool resetOnUnsolved = true;
 
         private bool _isSolved = false;
+        private Dictionary<int, PuzzleState> _targetInitialStates = new Dictionary<int, PuzzleState>();
 
         private void OnEnable()
         {
@@ -137,7 +140,7 @@ namespace PuzzleSystem
 
         private void OnElementChanged(IPuzzleElement element)
         {
-            if (!checkOnPartChanged || _isSolved) return;
+            if (!checkOnPartChanged) return;
 
             if (IsPartInArray(element))
             {
@@ -147,18 +150,50 @@ namespace PuzzleSystem
 
         private void Update()
         {
-            if (!continuousCheck || _isSolved) return;
+            if (!continuousCheck) return;
             CheckPuzzleStatus();
         }
 
         public void CheckPuzzleStatus()
         {
-            if (_isSolved) return;
+            bool wasSolved = _isSolved;
+            bool isNowSolved = IsPuzzleSolved();
 
-            if (IsPuzzleSolved())
+            if (isNowSolved && !wasSolved)
             {
                 _isSolved = true;
+                StoreTargetInitialStates();
                 ActivateTargets();
+            }
+            else if (!isNowSolved && wasSolved && resetOnUnsolved)
+            {
+                _isSolved = false;
+                ResetTargetsToInitialState();
+            }
+        }
+
+        private void StoreTargetInitialStates()
+        {
+            _targetInitialStates.Clear();
+            for (int i = 0; i < puzzleTargets.Count; i++)
+            {
+                var element = puzzleTargets[i].GetPuzzleElement();
+                if (element != null)
+                {
+                    _targetInitialStates[i] = element.InitialState;
+                }
+            }
+        }
+
+        private void ResetTargetsToInitialState()
+        {
+            for (int i = 0; i < puzzleTargets.Count; i++)
+            {
+                var element = puzzleTargets[i].GetPuzzleElement();
+                if (element != null && _targetInitialStates.TryGetValue(i, out var initialState))
+                {
+                    element.SetState(initialState);
+                }
             }
         }
 
@@ -213,6 +248,10 @@ namespace PuzzleSystem
         public void ResetPuzzle()
         {
             _isSolved = false;
+            if (resetOnUnsolved)
+            {
+                ResetTargetsToInitialState();
+            }
         }
     }
 }

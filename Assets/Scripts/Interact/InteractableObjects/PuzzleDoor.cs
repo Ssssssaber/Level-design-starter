@@ -6,6 +6,7 @@ namespace Interactable
     public class PuzzleDoor : Door, IPuzzleElement
     {
         public PuzzleState CurrentState => _toggled ? PuzzleState.On : PuzzleState.Off;
+        public PuzzleState InitialState => PuzzleState.On;
 
         public void SetState(PuzzleState state)
         {

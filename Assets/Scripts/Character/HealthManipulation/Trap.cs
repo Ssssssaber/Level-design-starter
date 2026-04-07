@@ -6,29 +6,25 @@ namespace Health
     [RequireComponent(typeof(Animator))]
     public class Trap : MonoBehaviour, IPuzzleElement
     {
+        [Header("Settings")]
         [SerializeField] private bool _isWorking = true;
-
-        public bool IsWorking
-        {
-            get
-            {
-                return _isWorking;
-            }
-            private set
-            {
-                _isWorking = value;
-                
-            }
-        }
+        [Header("References")]
+        [SerializeField] private Collider2D _damageCollider;
 
         private Animator _animator;
+        private float _baseAnimatorSpeed;
+        private bool _initialState;
 
-        public PuzzleState CurrentState => throw new System.NotImplementedException();
+        public bool IsWorking => _isWorking;
+
+        public PuzzleState CurrentState => _isWorking ? PuzzleState.On : PuzzleState.Off;
+        public PuzzleState InitialState => _initialState ? PuzzleState.On : PuzzleState.Off;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            IsWorking = _isWorking;
+            _baseAnimatorSpeed = _animator.speed;
+            _initialState = _isWorking;
         }
 
         public void SetState(PuzzleState state)
@@ -36,11 +32,12 @@ namespace Health
             switch (state)
             {
                 case PuzzleState.On:
-                    IsWorking = true;
+                    _isWorking = true;
+                    _animator.speed = _baseAnimatorSpeed;
                     break;
                 
                 case PuzzleState.Off:
-                    IsWorking = false;
+                    _isWorking = false;
                     break;
 
                 default:
@@ -51,14 +48,10 @@ namespace Health
 
         public void OnAnimationStart()
         {
-            if (_isWorking)
+            if (!_isWorking)
             {
-                _animator.StopPlayback();
-            }
-            else
-            {
-                _animator.StartPlayback();
+                _animator.speed = 0;
             }
         }
     }
-}
+}  
