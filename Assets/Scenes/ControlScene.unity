@@ -418,11 +418,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 207532461853068920, guid: 4420ae865b0a7ba489937194d1be6c1a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.32
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 207532461853068920, guid: 4420ae865b0a7ba489937194d1be6c1a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.19
+      value: 8.21
       objectReference: {fileID: 0}
     - target: {fileID: 774000307671978551, guid: 4420ae865b0a7ba489937194d1be6c1a, type: 3}
       propertyPath: _menuScene
@@ -1000,63 +1000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!1001 &1786919512
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3449340361089775302, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_Name
-      value: KeyLockedDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673672435492165187, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bd56cb6341d9b2c4f84aac4fd1b7a8e9, type: 3}
 --- !u!114 &2107504997 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5927006346201237915, guid: 8323e590963c1e146bdbab5723f05895, type: 3}
@@ -1673,4 +1616,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 252414052}
   - {fileID: 312528134}
-  - {fileID: 1786919512}

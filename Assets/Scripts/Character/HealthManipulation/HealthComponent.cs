@@ -58,7 +58,7 @@ namespace Health
 
             _currentHealth = 0;
             OnDeath?.Invoke();
-            Debug.Log($"{gameObject.name} died!");
+            Debug.LogWarning($"{gameObject.name} died!");
         }
     }
 }

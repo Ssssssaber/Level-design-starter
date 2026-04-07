@@ -105,16 +105,15 @@ namespace PuzzleSystem
             {
                 if (part.puzzleObject == null) continue;
 
-                int selfCount = part.puzzleObject.GetComponents<IPuzzleElement>().Length;
                 int childrenCount = part.puzzleObject.GetComponentsInChildren<IPuzzleElement>().Length;
 
-                if (selfCount + childrenCount == 0)
+                if (childrenCount == 0)
                 {
                     Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzlePart '{part.puzzleObject.name}' has no IPuzzleElement component!", part.puzzleObject);
                 }
-                else if (selfCount + childrenCount > 1)
+                else if (childrenCount > 1)
                 {
-                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzlePart '{part.puzzleObject.name}' has multiple ({selfCount + childrenCount}) IPuzzleElement components! Only one is allowed.", part.puzzleObject);
+                    Debug.LogError($"PuzzleManager: '{gameObject.name}' - PuzzlePart '{part.puzzleObject.name}' has multiple ({childrenCount}) IPuzzleElement components! Only one is allowed.", part.puzzleObject);
                 }
             }
         }

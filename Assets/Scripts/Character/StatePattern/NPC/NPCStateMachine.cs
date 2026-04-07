@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Data;
 using GameObjectsSound;
+using PuzzleSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace NPC
 {
-    public class NPCStateMachine : StateMachine
+    public class NPCStateMachine : StateMachine, IPuzzleElement
     {
         [System.Serializable]
         public class StateMapping
@@ -124,6 +125,7 @@ namespace NPC
         {
             Debug.Log("NPC died!");
             SwitchState(NPCStateID.Dying);
+            PuzzleEvents.NotifyStateChanged(this);
         }
 
         public override void OnTakeDamage()
@@ -177,6 +179,23 @@ namespace NPC
             foreach (Collider2D collider in allColliders)
             {
                 collider.enabled = value;
+            }
+        }
+
+        public PuzzleState CurrentState => _stateManager.CurrentStateID == NPCStateID.Dying ? PuzzleState.Off : PuzzleState.On;
+        public PuzzleState InitialState => PuzzleState.On;
+
+        public void SetState(PuzzleState state)
+        {
+            if (state == PuzzleState.Off && _stateManager.CurrentStateID != NPCStateID.Dying)
+            {
+                OnDeath();
+            }
+            else if (state == PuzzleState.On && _stateManager.CurrentStateID == NPCStateID.Dying)
+            {
+                // Respawn - reset to initial state
+                SetEnabledColliders(true);
+                SwitchState(InitStateID);
             }
         }
     }
