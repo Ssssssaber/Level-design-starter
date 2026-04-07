@@ -7,19 +7,24 @@ namespace Interactable
     public class InteractionDetector : MonoBehaviour
     {
         [SerializeField] private GameObject _interactionIcon;
+        [SerializeField] private Vector2 _iconOffset = new Vector2(0, 1.5f);
         
         private List<IInteractable> _interactables = new();
         private int _activeIndex = -1;
         private GameObject _interactor;
+        private Transform _iconTransform;
 
         private IInteractable CurrentInteractable => _activeIndex >= 0 && _activeIndex < _interactables.Count 
             ? _interactables[_activeIndex] 
             : null;
 
+        private MonoBehaviour CurrentInteractableComponent => CurrentInteractable as MonoBehaviour;
+
         void Start()
         {
             _interactionIcon.SetActive(false);
             _interactor = GameManager.Instance.Player.gameObject;
+            _iconTransform = _interactionIcon.transform;
         }
 
         public void OnInteract(InputAction.CallbackContext context)
@@ -98,8 +103,27 @@ namespace Interactable
 
         private void UpdateIcon()
         {
+            if (_interactionIcon == null)
+            {
+                Debug.Log($"Interaction icon on {gameObject.name} is null");
+                return;
+            }
+
             bool hasValidInteractable = CurrentInteractable != null && CurrentInteractable.CanInteract(_interactor);
-            _interactionIcon.SetActive(hasValidInteractable);
+            
+            if (hasValidInteractable && CurrentInteractableComponent != null)
+            {
+                _interactionIcon.transform.SetParent(null);
+                Vector2 targetPos = (Vector2)CurrentInteractableComponent.transform.position + _iconOffset;
+                _iconTransform.position = targetPos;
+                _interactionIcon.SetActive(true);
+            }
+            else
+            {
+                _interactionIcon.SetActive(false);
+                _interactionIcon.transform.SetParent(_interactor.transform);
+                _interactionIcon.transform.localPosition = Vector3.zero;
+            }
         }
     }
 }
