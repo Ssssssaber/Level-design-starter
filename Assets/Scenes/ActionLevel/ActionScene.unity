@@ -9141,7 +9141,7 @@ MonoBehaviour:
     requiredState: 0
   puzzleTargets:
   - targetObject: {fileID: 1135326106}
-    targetState: 1
+    targetState: 0
   checkOnPartChanged: 1
   continuousCheck: 0
   resetOnUnsolved: 1
