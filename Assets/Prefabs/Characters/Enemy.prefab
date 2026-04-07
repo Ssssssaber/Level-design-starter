@@ -86,6 +86,7 @@ MonoBehaviour:
   _visionBlockingLayers:
     serializedVersion: 2
     m_Bits: 65544
+  _checkInterval: 0.1
 --- !u!1 &4516538213720777631
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   _visionBlockingLayers:
     serializedVersion: 2
     m_Bits: 65544
+  _checkInterval: 0.1
 --- !u!1 &5175595668355948505
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +383,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9021978811065445501}
+    - targetCorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7618286171328189074}
     - targetCorrespondingSourceObject: {fileID: 9014777895617314234, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1772147525795435477}
@@ -575,3 +580,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health.AttackHitbox
   _damage: 1
   _hitboxCollider: {fileID: 7357505744860817388}
+--- !u!114 &7618286171328189074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551794574967235073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7b161b1cef51f48a279f0b8f307bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDrop
+  _dropItemPrefab: {fileID: 0}
+  _health: {fileID: 4810855212922908410}
