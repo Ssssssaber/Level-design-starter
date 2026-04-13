@@ -1,4 +1,4 @@
-# Техническая документация - Головоломки
+# Настройка головоломок
 
 ## Содержание
 
@@ -84,7 +84,7 @@ public interface IPuzzleElement
 |--------|------|-----------|
 | FloorTorch | InteractableObjects/FloorTorch.cs | On/Off (включён/выключен) |
 | PuzzleDoor | InteractableObjects/PuzzleDoor.cs | On/Off (открыт/закрыт) |
-| Trap | HealthManipulation/Trap.cs | On/Off (активна/неактивна) |
+| Trap | HealthManipulation/Trap.java | On/Off (активна/неактивна) |
 | NPCStateMachine | Character/StatePattern/NPC/NPCStateMachine.cs | On/Off (жив/мёртв) |
 
 ### Пример реализации IPuzzleElement
