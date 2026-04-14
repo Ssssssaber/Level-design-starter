@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _exitGameButton;
     [SerializeField] private GlobalSoundEntry _mainMenuMusic;
+    [SerializeField] private OptionsMenu _options;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void UIOptions()
     {
-        
+        _options.gameObject.SetActive(true);
     }
 
     private void UIExitGame()

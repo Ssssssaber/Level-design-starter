@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class GameMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _parentObject;
+    [SerializeField] private GameObject _optionsMenu;
     [SerializeField] private Button _returnToGameButton;
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _mainMenuButton;
@@ -33,7 +34,7 @@ public class GameMenuManager : MonoBehaviour
 
     private void UIOptions()
     {
-        
+        _optionsMenu.SetActive(true);
     }
 
     private void ReturnToMenu()
