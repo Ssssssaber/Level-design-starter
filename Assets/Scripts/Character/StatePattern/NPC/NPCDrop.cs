@@ -16,6 +16,7 @@ public class NPCDrop : MonoBehaviour
 
     private void DropItem()
     {
-        Instantiate(_dropItemPrefab, transform.position, Quaternion.identity);
+        var obj = Instantiate(_dropItemPrefab, transform.position, Quaternion.identity);
+        GameManager.Instance.MoveObjectToEnvironment(obj);
     }
 }

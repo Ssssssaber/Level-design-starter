@@ -6,6 +6,8 @@ using Player;
 using GameObjectsSound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Vladimir.Utils;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scene References")]
     [SerializeField] private string _menuScene;
+    private string _environmentScene;
     [SerializeField] private LevelData _currentLevel;
 
     [Header("References (Set before play mode)")]
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
         Camera = Instantiate(_cameraPrefab, _spawnTransform.position, Quaternion.identity);
         Camera.m_Follow = Player.transform;
         _spawnTransform.gameObject.SetActive(false);
+
         GameStarted?.Invoke();
 
         string menuName = GetSceneName(_menuScene);
@@ -123,6 +127,8 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => unloadOp.isDone);
             _isMenuLoaded = false;
         }
+
+        _environmentScene = _currentLevel.LevelScenes.First();
 
         foreach (var scene in _currentLevel.LevelScenes)
         {
@@ -142,6 +148,11 @@ public class GameManager : MonoBehaviour
         IsGameStarted = true;
     }
 
+    public void MoveObjectToEnvironment(GameObject obj)
+    {
+        SceneHelper.MoveObjectToScene(obj, _environmentScene);
+    }
+
     public void ReturnToMenu()
     {
         StartCoroutine(ReturnToMenuRoutine());
@@ -149,6 +160,7 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator ReturnToMenuRoutine()
     {
+        _environmentScene = "";
         foreach (var scenePath in _levelScenes)
         {
             string sceneName = GetSceneName(scenePath);

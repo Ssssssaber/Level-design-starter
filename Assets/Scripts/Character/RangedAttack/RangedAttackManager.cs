@@ -10,6 +10,7 @@ namespace RangedAttack
         public void LaunchProjectlie(Vector3 target)
         {
             _currentProjectlie = Instantiate(_projectileReference, _projectlieLaunchOrigin.position, Quaternion.identity).GetComponent<Projectile>();
+            GameManager.Instance.MoveObjectToEnvironment(_currentProjectlie.gameObject);
             _currentProjectlie.Launch(CalculateDirection(target));
         }
 

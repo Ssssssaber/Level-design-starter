@@ -34,6 +34,7 @@ namespace Interactable
             }
 
             GameObject droppedItem = Instantiate(_itemPrefab, transform.position + Vector3.down, Quaternion.identity);
+            GameManager.Instance.MoveObjectToEnvironment(droppedItem);
         }
 
         public void SetOpened(bool opened)
