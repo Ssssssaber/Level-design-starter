@@ -51,5 +51,15 @@ namespace Interactable
         {
             return "FloorTorch";
         }
+
+        public void OnInteractSound(GameObject interactor)
+        {
+            var localProfile = GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            var profile = localProfile ?? interactor?.GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            if (profile != null)
+            {
+                GameManager.Instance.FXSoundPlayer.PlaySound(GameObjectsSound.SoundID.Interact, profile, transform);
+            }
+        }
     }
 }

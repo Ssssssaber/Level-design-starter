@@ -61,5 +61,16 @@ namespace Interactable
         {
             return "Door";
         }
+
+        public void OnInteractSound(GameObject interactor)
+        {
+            var localProfile = GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            var profile = localProfile ?? interactor?.GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            if (profile != null)
+            {
+                var soundId = _toggled ? SoundID.Door_Open : SoundID.Door_Close;
+                GameManager.Instance.FXSoundPlayer.PlaySound(soundId, profile, transform);
+            }
+        }
     }
 }

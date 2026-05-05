@@ -28,20 +28,7 @@ namespace Interactable
             _iconTransform = _interactionIcon.transform;
         }
 
-        public void OnInteract(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                Debug.Log($"[Interact] ActiveIndex: {_activeIndex}, Count: {_interactables.Count}, Current: {CurrentInteractable}");
-                CurrentInteractable?.Interact(_interactor);
-                // Play interaction sound if player has a sound profile attached
-                var profile = _interactor?.GetComponent<SoundProfileContainer>()?.GetProfile();
-                if (profile != null)
-                {
-                    GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Interact, profile, _interactor.transform);
-                }
-            }
-        }
+        // Interact input handled via the dedicated OnInteract at the bottom
 
         public void OnSwapActiveItems(InputAction.CallbackContext context)
         {
@@ -64,9 +51,9 @@ namespace Interactable
         {
             if (collision.TryGetComponent(out IInteractable interactable))
             {
-                if (interactable.CanInteract(_interactor))
-                {
-                    _interactables.Add(interactable);
+            if (interactable.CanInteract(_interactor))
+            {
+                _interactables.Add(interactable);
                     
                     if (_activeIndex == -1)
                     {
@@ -130,6 +117,17 @@ namespace Interactable
                 _interactionIcon.SetActive(false);
                 _interactionIcon.transform.SetParent(_interactor.transform);
                 _interactionIcon.transform.localPosition = Vector3.zero;
+            }
+
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Debug.Log($"[Interact] ActiveIndex: {_activeIndex}, Count: {_interactables.Count}, Current: {CurrentInteractable}");
+                CurrentInteractable?.Interact(_interactor);
+                CurrentInteractable?.OnInteractSound(_interactor);
             }
         }
     }
