@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1316230877414461388, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 130f12908fbf98748ac82f2737955b81, type: 2}
     - target: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -415,6 +419,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1589767480572072437, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
   m_PrefabInstance: {fileID: 8585143308689291493}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7305048980517271337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1316230877414461388, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
+  m_PrefabInstance: {fileID: 8585143308689291493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735495828679846471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8888574f6d25d4ca76c5bb42869600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sound.ObjectSoundManager
 --- !u!1 &8735495828679846471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1017313744824390306, guid: c685474fd10b97f4cb81c1343490ff75, type: 3}
@@ -577,6 +592,7 @@ MonoBehaviour:
     stateAsset: {fileID: 11400000, guid: 8d6778191852177438995910349c67e1, type: 2}
   _currentState: {fileID: 0}
   _animator: {fileID: 0}
+  _soundManager: {fileID: 7305048980517271337}
   _movementSystem: {fileID: 0}
   _interact: {fileID: 5167657245662628621}
 --- !u!114 &2086544866307841948

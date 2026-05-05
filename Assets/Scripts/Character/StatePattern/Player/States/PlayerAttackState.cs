@@ -1,4 +1,5 @@
 using UnityEngine;
+using GameObjectsSound;
 
 namespace Player
 {
@@ -18,6 +19,11 @@ namespace Player
         {
             if (animName == "Attack")
             {
+                // Play attack sound using player's sound profile
+                if (_machine._soundManager != null)
+                {
+                    GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Attack, _machine._soundManager.GetProfile(), _machine.transform);
+                }
                 _machine.SwitchState(PlayerStateID.Idle);
             }
         }

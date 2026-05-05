@@ -20,10 +20,10 @@ namespace Interactable
         public void Interact(GameObject interactor)
         {
             if (!CanInteract(interactor)) return;
-            OpenChest();
+            OpenChest(interactor);
         }
 
-        private void OpenChest()
+        private void OpenChest(GameObject interactor)
         {
             SetOpened(true);
 
@@ -35,6 +35,12 @@ namespace Interactable
 
             GameObject droppedItem = Instantiate(_itemPrefab, transform.position + Vector3.down, Quaternion.identity);
             GameManager.Instance.MoveObjectToEnvironment(droppedItem);
+            // Play pickup sound for chest loot pickup
+            var profile = interactor?.GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            if (profile != null)
+            {
+                GameManager.Instance.FXSoundPlayer.PlaySound(GameObjectsSound.SoundID.Pickup, profile, transform);
+            }
         }
 
         public void SetOpened(bool opened)

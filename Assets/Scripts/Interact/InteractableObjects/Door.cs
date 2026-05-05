@@ -1,5 +1,6 @@
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
+using GameObjectsSound;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -36,6 +37,13 @@ namespace Interactable
 
             _toggled = !_toggled;
             UdpateSprite(_toggled);
+            // Play door open/close sound using interactor's profile
+            var profile = interactor?.GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            if (profile != null)
+            {
+                var soundId = _toggled ? SoundID.Door_Open : SoundID.Door_Close;
+                GameManager.Instance.FXSoundPlayer.PlaySound(soundId, profile, transform);
+            }
             UpdateColliderObstacle(_toggled);
         }
 

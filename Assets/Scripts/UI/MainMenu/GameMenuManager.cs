@@ -13,6 +13,7 @@ public class GameMenuManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.GameMenuRequested += EnableGameMenu;
+        GameManager.Instance.GameMenuRequested += GameManager.Instance.PauseEnvironmentScene;
 
         _returnToGameButton.onClick.AddListener(DisableMenu);
         _optionsButton.onClick.AddListener(UIOptions);
@@ -30,6 +31,7 @@ public class GameMenuManager : MonoBehaviour
     public void DisableMenu()
     {
         _parentObject.SetActive(false);
+        GameManager.Instance.UnpauseEnvironmentScene();
     }
 
     private void UIOptions()

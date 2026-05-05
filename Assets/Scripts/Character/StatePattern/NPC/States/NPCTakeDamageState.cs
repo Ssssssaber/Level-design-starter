@@ -1,4 +1,5 @@
 using UnityEngine;
+using GameObjectsSound;
 
 namespace NPC
 {
@@ -9,6 +10,11 @@ namespace NPC
         {
             _machine._agent.isStopped = true;
             _machine._animator.Play("TakeDamage");
+            // Play take-damage sound
+            if (_machine._soundManager != null)
+            {
+                GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.TakeDamage, _machine._soundManager.GetProfile(), _machine.transform);
+            }
         }
 
 

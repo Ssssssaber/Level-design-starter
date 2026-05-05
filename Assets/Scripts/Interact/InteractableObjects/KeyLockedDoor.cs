@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices.WindowsRuntime;
+using GameObjectsSound;
 using Inventory;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,11 +16,6 @@ namespace Interactable
 
         [Header("Colliders")]
         [SerializeField] BoxCollider2D _collider;
-
-
-        [Header("Interactable")]
-        [Tooltip("If door is stuck player cannot interact with it")]
-        [SerializeField] bool _doorStuck = false;
 
         [Header("Debug")]
         [Tooltip("On Awake() will update its state")]
@@ -64,6 +60,13 @@ namespace Interactable
             }
 
             _opened = true;
+            // Play door open/close sound using interactor's profile
+            var profile = interactor?.GetComponent<GameObjectsSound.SoundProfileContainer>()?.GetProfile();
+            if (profile != null)
+            {
+                var soundId = _opened ? SoundID.Door_Open : SoundID.Door_Close;
+                GameManager.Instance.FXSoundPlayer.PlaySound(soundId, profile, transform);
+            }
             UdpateSprite(_opened);
             UpdateColliderObstacle(_opened);
             Debug.LogWarning("Door opened");

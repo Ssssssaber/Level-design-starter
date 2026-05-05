@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using GameObjectsSound;
 using UnityEngine.InputSystem;
 
 namespace Interactable
@@ -33,6 +34,12 @@ namespace Interactable
             {
                 Debug.Log($"[Interact] ActiveIndex: {_activeIndex}, Count: {_interactables.Count}, Current: {CurrentInteractable}");
                 CurrentInteractable?.Interact(_interactor);
+                // Play interaction sound if player has a sound profile attached
+                var profile = _interactor?.GetComponent<SoundProfileContainer>()?.GetProfile();
+                if (profile != null)
+                {
+                    GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Interact, profile, _interactor.transform);
+                }
             }
         }
 

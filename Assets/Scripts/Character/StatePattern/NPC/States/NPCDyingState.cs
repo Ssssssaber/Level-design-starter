@@ -6,8 +6,6 @@ namespace NPC
     [CreateAssetMenu(menuName = "NPC/States/Dying")]
     public class DyingState : NPCState
     {
-        private float _deathTimer = 3f; // Time to remain "dead" before respawning/removal
-
         public override void Enter()
         {
             Debug.Log("Enter DyingState");

@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTorch
       objectReference: {fileID: 0}
+    - target: {fileID: 3494852212823317496, guid: b70abd0df94ae0f40831559147d4f5ae, type: 3}
+      propertyPath: _soundProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: b98d1f5b2894a904d978c91a6d433639, type: 2}
     - target: {fileID: 6673672435492165187, guid: b70abd0df94ae0f40831559147d4f5ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

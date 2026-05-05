@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3975536664321266773}
   - component: {fileID: 8903456386560617464}
   - component: {fileID: 5653295823531804275}
+  - component: {fileID: 2927945127119114515}
   m_Layer: 11
   m_Name: Interactable
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable.Note
   _opened: 0
   _noteGameObject: {fileID: 5309420417953603249}
+--- !u!114 &2927945127119114515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073562851780448607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8888574f6d25d4ca76c5bb42869600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjectsSound.SoundProfileContainer
+  _soundProfile: {fileID: 11400000, guid: 5a2453aa057468b4faa090aada2ddf9a, type: 2}
 --- !u!1 &3449340361089775302
 GameObject:
   m_ObjectHideFlags: 0

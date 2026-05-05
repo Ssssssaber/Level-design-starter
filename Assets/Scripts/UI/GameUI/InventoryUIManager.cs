@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    [SerializeField] private int _maxHeartsPerRow = 5; // Max hearts per row before wrapping
-
-
     private InventoryManager _playerInventory;
     private List<GameObject> _inventoryObjects = new List<GameObject>();
     private GridLayoutGroup _gridLayout;

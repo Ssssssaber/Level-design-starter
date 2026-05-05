@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5524b87cc00de146a0ecef459155731, type: 3}
-  m_Name: LargeEnemySoundProfile
-  m_EditorClassIdentifier: Assembly-CSharp::Sound.SoundProfile
+  m_Name: PlayerSound
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjectsSound.SoundProfile
   Sounds:
-  - Sound: 0
-    Clip: {fileID: 8300000, guid: edf973480b40ba24cb12394e7faa619e, type: 3}
-    Volume: 1
   - Sound: 1
-    Clip: {fileID: 8300000, guid: 258bbd534506a8040931cb24aad3c3b7, type: 3}
+    Clip: {fileID: 8300000, guid: c771fa4a6407bfa4cac928d02740f790, type: 3}
+    Volume: 1
+  - Sound: 0
+    Clip: {fileID: 8300000, guid: 76716dabba6c6d24ca190a9c43a8dc37, type: 3}
+    Volume: 1
+  - Sound: 3
+    Clip: {fileID: 8300000, guid: 5f75d7f6bfa616c4ea31d54b1f0134c8, type: 3}
     Volume: 1

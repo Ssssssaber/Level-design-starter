@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameObjectsSound;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Movement;
@@ -43,6 +44,9 @@ namespace Player
         public PlayerState _currentState;
         public StateManager _stateManager = new StateManager(PlayerStateID.Idle);
         [HideInInspector] public Animator _animator;
+        public SoundProfileContainer _soundManager;
+        private float _footstepCooldown = 0.4f;
+        private float _footstepTimer = 0f;
         [HideInInspector] public MovementSystem _movementSystem;
         [SerializeField] private InteractionDetector _interact;
         private PlayerInput _playerInput;
@@ -63,6 +67,9 @@ namespace Player
             _actions = new InputSystem_Actions();
 
             _playerInput.actions = _actions.asset;
+            _soundManager = GetComponent<SoundProfileContainer>();
+            _footstepTimer = _footstepCooldown;
+            _soundManager = GetComponent<SoundProfileContainer>();
 
             _actions.Player.Move.performed += OnMove;
             _actions.Player.Move.canceled += OnMove;
@@ -111,6 +118,30 @@ namespace Player
                 SpriteUtils.SetFlipX(transform, direction.x < 0);
             }
             _movementSystem.SetDirection(direction); // Update direction, but movement is controlled by the state
+
+            // Footstep sound throttling while moving
+            _footstepTimer -= Time.deltaTime;
+            if (direction.magnitude > 0.1f)
+            {
+                if (_footstepTimer <= 0f)
+                {
+                    PlayFootstepSound();
+                    _footstepTimer = _footstepCooldown;
+                }
+            }
+            else
+            {
+                // reset timer when standing still
+                _footstepTimer = 0f;
+            }
+        }
+
+        private void PlayFootstepSound()
+        {
+            if (_soundManager != null)
+            {
+                GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.Footstep, _soundManager.GetProfile(), transform);
+            }
         }
 
         public override void OnDeath()
@@ -121,6 +152,11 @@ namespace Player
 
         public override void OnTakeDamage()
         {
+            // Play take-damage sound when player takes damage
+            if (_soundManager != null)
+            {
+                GameManager.Instance.FXSoundPlayer.PlaySound(SoundID.TakeDamage, _soundManager.GetProfile(), transform);
+            }
         }
 
         public void OnAnimationEvent(string eventName)

@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         LoadMenu();
     }
 
@@ -155,7 +156,24 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+
         StartCoroutine(ReturnToMenuRoutine());
+    }
+
+    public void PauseEnvironmentScene()
+    {
+        foreach (var scene in _currentLevel.LevelScenes)
+        {
+            SceneHelper.PauseSceneIfLoaded(scene);
+        }
+    }
+
+    public void UnpauseEnvironmentScene()
+    {
+        foreach (var scene in _currentLevel.LevelScenes)
+        {
+            SceneHelper.ResumeSceneIfLoaded(scene);
+        }
     }
 
     private System.Collections.IEnumerator ReturnToMenuRoutine()
