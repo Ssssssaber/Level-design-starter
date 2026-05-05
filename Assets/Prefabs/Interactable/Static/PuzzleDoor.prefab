@@ -108,5 +108,5 @@ MonoBehaviour:
   _offState: {fileID: -468854414, guid: 1653455c3ae8fac4397abd4d58ce4f65, type: 3}
   _sprite: {fileID: 6832762918629950717}
   _collider: {fileID: 4384045555538861807}
-  _doorStuck: 0
+  _doorStuck: 1
   _toggled: 0

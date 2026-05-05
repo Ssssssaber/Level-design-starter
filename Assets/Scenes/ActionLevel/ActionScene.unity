@@ -13858,30 +13858,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_TileSize
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_VoxelSize
-      value: 0.16666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 1cac151034951834288a2af46070c5b6, type: 2}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_UseGeometry
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_OverrideTileSize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1666311752189885198, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
-      propertyPath: m_OverrideVoxelSize
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4604803873856589960, guid: 76cb0d8858a98454fafbd09d8ca9e66a, type: 3}
       propertyPath: m_Name
       value: NAVMESH
