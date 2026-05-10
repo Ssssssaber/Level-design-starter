@@ -69,7 +69,6 @@ namespace Player
             _playerInput.actions = _actions.asset;
             _soundManager = GetComponent<SoundProfileContainer>();
             _footstepTimer = _footstepCooldown;
-            _soundManager = GetComponent<SoundProfileContainer>();
 
             _actions.Player.Move.performed += OnMove;
             _actions.Player.Move.canceled += OnMove;
@@ -113,11 +112,13 @@ namespace Player
         private void OnMove(InputAction.CallbackContext context)
         {
             var direction = context.ReadValue<Vector2>().normalized;
-            if (_movementSystem.CanMove)
-            {
+
+            // Always flip sprite based on horizontal input direction immediately,
+            // regardless of whether CanMove is true (player may still be in Idle state)
+            if (Mathf.Abs(direction.x) > 0.01f)
                 SpriteUtils.SetFlipX(transform, direction.x < 0);
-            }
-            _movementSystem.SetDirection(direction); // Update direction, but movement is controlled by the state
+
+            _movementSystem.SetDirection(direction);
 
             // Footstep sound throttling while moving
             _footstepTimer -= Time.deltaTime;
@@ -131,7 +132,6 @@ namespace Player
             }
             else
             {
-                // reset timer when standing still
                 _footstepTimer = 0f;
             }
         }
